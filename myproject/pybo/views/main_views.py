@@ -11,4 +11,9 @@ def hello_pybo():
 
 @bp.route('/')
 def index():
+    return render_template('index.html')
+    # return redirect(url_for('question._list'))
+
+@bp.route('/li')
+def index1():
     return redirect(url_for('question._list'))

@@ -32,7 +32,15 @@
             <textarea class="form-control" name="content"
              id="content" rows="10">{{ form.content.data or '' }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
+        <div class="container-sm">
+        <form action="http://localhost:5000/uploader"
+        method="POST"
+        enctype="multipart/form-data">
+        <input type="file" name="file" />
+    </form>
+</div>
+    <br><br>
+        <button type="submit" class="btn btn-primary" style="margin-left: 600px;">저장하기</button>
     </form>
 </div>
 {% endblock %}
