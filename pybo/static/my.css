@@ -1,0 +1,145 @@
+@charset "utf-8";
+
+*{
+    padding : 0;
+    margin: 0 auto;
+    font-family: "맑은 고딕";
+    color : #888888;
+    list-style: none;
+    border : 0;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+h1, h2, h3, h4, h5, h6{
+    color: #888888;
+}
+.all{
+    width: 100%;
+}
+.wrap{
+    width:1200px;
+}
+.clear{
+    clear : both;
+}
+/* 헤더 */
+header{
+    height: 100px;
+    background-color: aqua;
+}
+#header_div{
+    height: 100px;
+    background-color: bisque;
+}
+/* 로고 */
+.logo{
+    width: 200px;
+    height: 100px;
+    overflow: hidden;
+    float: left;
+}
+.logo img{
+    width: 100%;
+    height: 100%;
+
+}
+/* 메뉴(네비게이션) */
+nav{
+    float:right;
+    height: 100px;
+}
+.menu{
+width: 800px;
+margin-top: 5px;
+}
+.menu > li {
+    float:left;
+    width:200px;
+    line-height: 50px;
+    color:black;
+    position: relative;
+    transition: all 0.4s;
+    text-align: center;
+}
+.menu>li:hover{
+    background-color: #4a4938;
+    color:#ffffff;
+}
+.submenu{
+    position: absolute;
+    width:100%;
+    background-color: rgba(255,255,255,0.8);
+    z-index: 99;
+    display: none;
+}
+.submenu>li{
+    color:black;
+    transition: all 0.4s;
+}
+.submenu>li:hover{
+    background-color: #caac7d;
+    color:#ffffff;
+}
+/* 이미지 슬라이드 */
+#img_slide{
+    height: 300px;
+    background-color: aquamarine;
+}
+.slide{
+    height: 300px;
+    overflow: hidden;
+    background-color: black;
+    position: relative;
+}
+.slide>img{
+    position: absolute;
+    width: 100%;
+    transition: all 1s;
+}
+/* 콘텐츠 */
+#contents{
+    height: 200px;
+    
+}
+/* 공지사항 */
+.notice{
+    width:400px;
+    height: 200px;
+    float:left;
+}
+.title{
+    border-bottom: 1px solid;
+    padding:5px 0;
+    text-align: center;
+}
+.border{
+    border-collapse: collapse;
+    font-size: 0.9em;
+    width: 100%;
+}
+.border tr >td {
+    padding : 5px 0;
+    height: 30px;
+}
+.border tr:nth-child(2n){
+    background-color: bisque;
+}
+.gallery{
+    width: 400px;
+    height: 200px;
+    float: left;
+    overflow: hidden;
+    text-align: center;
+}
+.gallery img{
+    width: 30%;
+    height: 150px;
+    padding-top: 5px;
+}
+/* 풋터 */
+footer{
+    height: 100px;
+    background-color: blueviolet;
+}

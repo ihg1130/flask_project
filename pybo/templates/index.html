@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세계의 미술관</title>
+    <link href="css/my.css" rel="stylesheet">
+    <script src="js/jquery-1.12.3.js"></script>
+    <script src="js/js.js" defer="defer"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='my.css') }}">
+</head>
+<body>
+    <header class="all">
+        <div id="header_div" class="wrap">
+            <div class="logo">
+                <a href="#"><img src="{{url_for('static', filename='logo.jpg')}}"></a>
+            </div>
+            <nav>
+                <ul class="menu">
+                    <li><a href="{{ url_for('main.index1')}}">소장처별</a>
+                        <ul class="submenu">
+                            <li><a href="#">한국</a></li>
+                            <li><a href="#">프랑스</a></li>
+                            <li><a href="#">이탈리아</a></li>
+                            <li><a href="#">독일</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">장르별</a>
+                        <ul class="submenu">
+                            <li><a href="#">회화</a></li>
+                            <li><a href="#">판화</a></li>
+                            <li><a href="#">공예/고대유물</a></li>
+                            <li><a href="#">그외</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">테마별</a>
+                        <ul class="submenu">
+                            <li><a href="#">초상화/인물</a></li>
+                            <li><a href="#">종교</a></li>
+                            <li><a href="#">신화/문학</a></li>
+                            <li><a href="#">일상/스포츠</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">시대별</a>
+                        <ul class="submenu">
+                            <li><a href="#">1900년이전</a></li>
+                            <li><a href="#">1900년대</a></li>
+                            <li><a href="#">현대</a></li>
+                            <li><a href="#">그외</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="clear"></div>
+
+    <!-- 이미지 슬라이드 -->
+    <div id="img_slide" class="wrap">
+        <div class="slide">
+        <img src="{{url_for('static', filename='1.jpg')}}" alt="hurb"></a>
+        <img src="images/crisis.png" alt="crisis"></a>
+        <img src="images/wine.png" alt="wine"></a>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <!-- 콘텐츠 -->
+    <div id="contents" class="wrap">
+     <div class="notice">
+        <div class="title">
+            <h3>공지사항</h3>
+        </div>
+        <table class="border">
+            <tr><td><a href="#">빈센트 반 고흐 작품 전시 안내</a></td></tr>
+            <tr><td><a href="#">ㅁㄴㄹㄴㄻㄴㄾㅊㅌㅊㅍ</a></td></tr>
+            <tr><td><a href="#">ㅂㅈㄷㄴㅇㄾㅊㅌㄴㅇㄹㄴㅇㄹ</a></td></tr>
+            <tr><td><a href="#">ㅁㄴㅇㄹㄴㅇㄹㄴㄹㅋㅌㅊㅌㅊㄴㄴ</a></td></tr>
+        </table>
+     </div>
+     <!-- 갤러리 -->
+     <div class="gallery">
+        <div class="title">
+            <h3>갤러리</h3>
+        </div>
+        <a href="#"><img src="images/1.jpg" alt="1"></a>
+        <a href="#"><img src="images/4.jpg" alt="2"></a>
+        <a href="#"><img src="images/3.jpg" alt="3"></a>
+     </div>
+    </div>
+    <div class="clear"></div>
+
+    <footer class="wrap">
+        풋터
+    </footer>
+</body>
+</html>
