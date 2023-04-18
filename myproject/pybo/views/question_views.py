@@ -1,15 +1,14 @@
-from flask import Flask, Blueprint, render_template, request, url_for
+from datetime import datetime
+from flask import Blueprint, render_template, request, url_for, g, flash
 from pybo.forms import QuestionForm, AnswerForm
 from werkzeug.utils import redirect
 from pybo.models import Question
 from datetime import datetime
 from .. import db
-from werkzeug.utils import secure_filename
+from pybo.views.auth_views import login_required
+
 
 bp = Blueprint('question', __name__, url_prefix='/question')
-app = Flask(__name__)
-
-app.config['']
 
 
 @bp.route('/list/')
@@ -27,22 +26,32 @@ def detail(question_id):
     return render_template('question/question_detail.html', question=question, form=form)
 
 @bp.route('/create/', methods=('GET', 'POST'))
+@login_required
 def create():
     form = QuestionForm()
     if request.method == 'POST' and form.validate_on_submit():
-        question = Question(subject=form.subject.data, content=form.content.data, create_date=datetime.now())
+        question = Question(subject=form.subject.data, content=form.content.data,
+                             create_date=datetime.now(), user=g.user)
         db.session.add(question)
         db.session.commit()
         return redirect(url_for('main.index'))
     return render_template('question/question_form.html', form=form)
 
-
-@app.route('/uploader', methods=['GET', 'POST'])
-def uploader_file(): 
-    if request.method =='POST':
-        f = request.files['file']
-        f.save(secure_filename(f.filename))
-        return render_template('question/list.html')
-    else:
-        return render_template('question_form.html')
-    
+@bp.route('/modify/<int:question_id>', methods=('GET', 'POST'))
+@login_required
+def modify(question_id):
+    question = Question.query.get_or_404(question_id)
+    if g.user != question.user:
+        flash('수정권한이 없습니다')
+        return redirect(url_for('question.detail', question_id=question_id))
+    if request.method == 'POST':  # POST 요청
+        form = QuestionForm()
+        if form.validate_on_submit():
+            # form 변수에 들어있는 입력 데이터를 question 객체에 업데이트
+            form.populate_obj(question)
+            question.modify_date = datetime.now()  # 수정일시 저장
+            db.session.commit()
+            return redirect(url_for('question.detail', question_id=question_id))
+    else:  # GET 요청, 조회한 데이터를 obj 매개변수에 전달하여 폼 생성
+        form = QuestionForm(obj=question)
+    return render_template('question/question_form.html', form=form)

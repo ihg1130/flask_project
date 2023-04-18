@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for
+from flask import Blueprint, url_for
 from pybo.models import Question
 from werkzeug.utils import redirect
 
@@ -11,9 +11,4 @@ def hello_pybo():
 
 @bp.route('/')
 def index():
-    return render_template('index.html')
-    # return redirect(url_for('question._list'))
-
-@bp.route('/li')
-def index1():
-    return redirect(url_for('question._list'))
+      return redirect(url_for('question._list'))
