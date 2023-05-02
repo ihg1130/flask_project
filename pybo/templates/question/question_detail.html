@@ -9,6 +9,12 @@
     {% endfor %}
     <!-- 질문 -->
     <h2 class="border-bottom py-2">{{ question.subject }}</h2>
+    <!-- {% if question.file_name %}
+    <div>
+        <p>File: {{ post.file.filename }}</p>
+        <a href="{{ url_for('bp.download_file', file_name=qeustion.file.name) }}">Download</a>
+    </div>
+    {% endif %} -->
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>

@@ -1,15 +1,18 @@
 from datetime import datetime
-from flask import Blueprint, render_template, request, url_for, g, flash
+from flask import Flask, Blueprint, render_template, request, url_for, g, flash
 from pybo.forms import QuestionForm, AnswerForm
-from werkzeug.utils import redirect
+from werkzeug.utils import redirect, secure_filename
 from pybo.models import Question
 from datetime import datetime
 from .. import db
 from pybo.views.auth_views import login_required
+from io import BytesIO
 
+import os
 
 bp = Blueprint('question', __name__, url_prefix='/question')
 
+app=Flask(__name__)
 
 @bp.route('/list/')
 def _list():
@@ -30,10 +33,14 @@ def detail(question_id):
 def create():
     form = QuestionForm()
     if request.method == 'POST' and form.validate_on_submit():
+        f = request.files['file']
+        data = BytesIO(f.read())
         question = Question(subject=form.subject.data, content=form.content.data,
-                             create_date=datetime.now(), user=g.user)
+                             create_date=datetime.now(),file_name=f.filename, file_data=data.getvalue(), user=g.user)
         db.session.add(question)
         db.session.commit()
+        f = request.files['file']
+        f.save('./images/' + secure_filename(f.filename)) # 파일명을 보호하기위한 함수, 지정된 경로에 파일 저장
         return redirect(url_for('main.index'))
     return render_template('question/question_form.html', form=form)
 

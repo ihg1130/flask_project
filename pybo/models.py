@@ -15,6 +15,8 @@ class Question(db.Model):
     user = db.relationship('User', backref=db.backref('question_set'))
     modify_date = db.Column(db.DateTime(), nullable=True)
     voter = db.relationship('User', secondary=question_voter, backref=db.backref('question_voter_set'))
+    file_name = db.Column(db.String(200), nullable=True)
+    file_data = db.Column(db.LargeBinary, nullable=True)
 
 answer_voter = db.Table(
     'answer_voter',

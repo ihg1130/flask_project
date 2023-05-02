@@ -1,6 +1,7 @@
-from flask import Blueprint, url_for, render_template, flash, request, session, g
+from flask import Blueprint, url_for, render_template, flash, request, session, g, Flask, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
+
 
 from pybo import db
 from pybo.forms import UserCreateForm, UserLoginForm
@@ -9,7 +10,6 @@ from pybo.models import User
 import functools
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
-
 
 @bp.route('/signup/', methods=('GET', 'POST'))
 def signup():
@@ -72,3 +72,4 @@ def login_required(view):
             return redirect(url_for('auth.login', next=_next))
         return view(*args, **kwargs)
     return wrapped_view
+
