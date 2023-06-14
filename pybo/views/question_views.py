@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, Blueprint, render_template, request, url_for, g, flash
+from flask import Flask, Blueprint, current_app, render_template, request, url_for, g, flash, send_file
 from pybo.forms import QuestionForm, AnswerForm
 from werkzeug.utils import redirect, secure_filename
 from pybo.models import Question
@@ -26,7 +26,7 @@ def _list():
 def detail(question_id):
     form = AnswerForm()
     question = Question.query.get_or_404(question_id)
-    return render_template('question/question_detail.html', question=question, form=form)
+    return render_template('question/question_detail.html', question=question, form=form, image_file='images/question.file_name.png')
 
 @bp.route('/create/', methods=('GET', 'POST'))
 @login_required
@@ -40,7 +40,9 @@ def create():
         db.session.add(question)
         db.session.commit()
         f = request.files['file']
-        f.save('./images/' + secure_filename(f.filename)) # 파일명을 보호하기위한 함수, 지정된 경로에 파일 저장
+        filepath = os.path.join(current_app.root_path, 'static', 'image', question.file_name )
+        f.save(filepath)
+        # f.save('./images/' + secure_filename(f.filename)) # 파일명을 보호하기위한 함수, 지정된 경로에 파일 저장
         return redirect(url_for('main.index'))
     return render_template('question/question_form.html', form=form)
 

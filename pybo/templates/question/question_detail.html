@@ -9,12 +9,12 @@
     {% endfor %}
     <!-- 질문 -->
     <h2 class="border-bottom py-2">{{ question.subject }}</h2>
-    <!-- {% if question.file_name %}
+    {% if question.file_name %}
     <div>
-        <p>File: {{ post.file.filename }}</p>
-        <a href="{{ url_for('bp.download_file', file_name=qeustion.file.name) }}">Download</a>
-    </div>
-    {% endif %} -->
+        <img src="{{ url_for('static', filename='image/DSC09580.JPG') }}", width="800" 
+        style="margin-left: auto; margin-right: auto; display: block;"/>
+        </div>
+    {% endif %}
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>

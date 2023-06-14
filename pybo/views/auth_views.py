@@ -1,15 +1,38 @@
-from flask import Blueprint, url_for, render_template, flash, request, session, g, Flask, redirect
+from flask import Blueprint, url_for, render_template, flash, request, session, g, Flask, redirect, current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import redirect
-
+from flask_mail import Mail, Message
 
 from pybo import db
 from pybo.forms import UserCreateForm, UserLoginForm
 from pybo.models import User
 
 import functools
+import config
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
+
+
+
+
+
+app = Flask(__name__)
+mail = Mail(app)
+    
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'a4569677@gmail.com'
+app.config['MAIL_PASSWORD'] = '991027Baby~'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+    
+@app.route('/signup/')
+def index():
+    msg = Message('Hello', sender='a4569677@gmail.com', recipients=['ihg1130@naver.com'])
+    msg.body = 'Hello Flask'
+    mail.send(msg)
+    
 
 @bp.route('/signup/', methods=('GET', 'POST'))
 def signup():
@@ -22,9 +45,10 @@ def signup():
                         email=form.email.data)
             db.session.add(user)
             db.session.commit()
-            return redirect(url_for('main.index'))
-        else:
-            flash('이미 존재하는 사용자입니다.')
+            msg = Message('Hello', sender='a4569677@gmail.com', recipients=['ihg1130@naver.com'])
+            msg.body = 'Hello Flask'
+            mail.send(msg)
+            
     return render_template('auth/signup.html', form=form)
 
 

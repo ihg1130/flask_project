@@ -25,6 +25,7 @@
             <input type="text" class="form-control" name="email" id="email"
                    value="{{ form.email.data or '' }}" placeholder="you@example.com">
         </div>
+        <p><a href="{{ url_for('auth.signup') }}">이메일 주소 확인</a></p>
         <button type="submit" class="btn btn-primary">회원가입</button>
     </form>
 </div>
