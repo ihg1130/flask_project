@@ -1,0 +1,497 @@
+{% extends 'base1.html' %}
+{% block content %}
+                <div class="flex min-w-0 flex-1 flex-col overflow-hidden">
+                    <div class="relative z-0 flex flex-1 overflow-hidden">
+                        <main class="bg-white relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
+                            <article class="bg-white">
+                                <!-- <div> -->
+                                <div>
+                                    <div>
+                                        <!-- <img class="h-56 w-full object-cover" src=""> 배경 이미지 파일 -->
+                                        <div class="h-56 w-full bg-black"></div>
+                                    </div>
+                                    <!-- <div style="position: relative" class="d-none d-sm-block">
+                                        <div id="updateHeaderImageModal" class="modal">
+                                            <div class=" modal-content" style="transform: translateY(0px);">
+                                                <div class="relative bg-white rounded-lg">
+                                                    <div id="updateHeaderImageModalClose" class="close no-select">
+                                                        <div
+                                                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
+                                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd"
+                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                    clip-rule="evenodd"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="py-6 px-6 lg:px-8"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                                <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                                    <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
+                                        <div class="flex">
+                                            <span class="relative inline-block">
+                                                <!-- <img class="h-36 w-36 rounded-full ring-4 ring-white sm:h-36 sm:w-36 bi bi-person-circle" src=""> -->
+                                                <div
+                                                    class="h-36 w-36 rounded-full ring-4 ring-white sm:h-36 sm:w-36 bg-gray-100">
+                                                </div>
+                                                <!-- <a href="">
+                                                    <span
+                                                        class="absolute bottom-0 right-0 block h-10 w-10 rounded-full bg-gray-100 ring-2 ring-white hover:bg-gray-300 cursor-pointer">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                                            fill="currentColor" class="w-6 h-6 text-gray-600 absolute"
+                                                            style="top: 6px; left: 8px">
+                                                            <path d="M12 9a3.75 3.75 0 100 7.5A3.75 3.75 0 0012 9z">
+                                                            </path>
+                                                            <path fill-rule="evenodd"
+                                                                d="M9.344 3.071a49.52 49.52 0 015.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 01-3 3h-15a3 3 0 01-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 001.11-.71l.822-1.315a2.942 2.942 0 012.332-1.39zM6.75 12.75a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0zm12-1.5a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                                                clip-rule="evenodd"></path>
+                                                        </svg>
+                                                    </span>
+                                                </a> -->
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
+                                            <div class="mt-12 min-w-0 flex-1 sm:hidden 2xl:block">
+                                                {% for chumo in chumos %}
+                                                <h1 class="truncate text-2xl font-bold text-gray-900">{{ chumo.name }}</h1>
+                        <p class="text-sm font-medium text-gray-500 mt-3">{{ chumo.birth }}~{{ chumo.death }}</p>
+                        {% endfor %}
+                                            </div>
+                                            <div class="justify-stretch mt-6 flex space-x-2 sm:space-x-4">
+                                                <div class="flex h-full">
+                                                    <div id="notificationModal" class="modal">
+                                                        <div id="notification-modal" class=" modal-content"
+                                                            style="transform: translateY(0px);">
+                                                            <div class="relative bg-white rounded-lg">
+                                                                <div id="modalClose" class="close no-select">
+                                                                    <div
+                                                                        class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                                                                        <svg aria-hidden="true" class="w-5 h-5"
+                                                                            fill="currentColor" viewBox="0 0 20 20"
+                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                                clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="flex h-full">
+                                                    <form class="button_to" method="get"
+                                                        action="/memorials/133977/settings"></form>
+                                                    <button id="shareBtn" class="modal-trigger no-select btn-secondary">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="w-6 h-6 -ml-1 mr-2 h-5 w-5 text-gray-400">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z">
+                                                            </path>
+                                                        </svg>
+                                                        <span>공유</span>
+                                                    </button>
+                                                    </form>
+                                                </div>
+
+                                                <form class="button_to" method="get"
+                                                    action="/memorials/133977/settings">
+                                                    <button class="btn-secondary" type="submit">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                            class="w-6 h-6 -ml-1 mr-2 h-5 w-5 text-gray-400">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z">
+                                                            </path>
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                        </svg>
+                                                        <span>관리</span>
+                                                    </button>
+                                                </form> -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 hidden min-w-0 flex-1 sm:block 2xl:hidden">
+                                    <h1 class="truncate text-2xl font-bold text-gray-900">이뉴니</h1>
+                                    <p class="text-sm font-medium text-gray-500 mt-3">1994년 03월 23일 ~ </p>
+                                </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="mt-6 sm:mt-2 2xl:mt-5">
+                    <div class="border-b border-gray-200">
+                        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                            <nav class="-mb-px flex space-x-8" id="tab-button-nav" aria-label="Tabs">
+                                <!-- Current: "border-pink-500 text-gray-900", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
+                                <a href="{{ url_for('question.create') }}" class="border-black text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-tab-section="tab-section-1">홈</a>
+                  <a href="{{ url_for('question._list') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-turbo="false" data-tab-section="tab-section-2">추모글</a>
+                <a href="{{ url_for('question.gallery') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-turbo="false" data-tab-section="tab-section-2">사진첩</a>
+                <a href="{{ url_for('question.timeline') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-turbo="false" data-tab-section="tab-section-3">타임라인</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- home list -->
+                <div class="mx-auto mt-6 mb-6 max-w-5xl px-4 sm:px-6 lg:px-8 tab-section" id="tab-section-1"
+                    data-controller="lightbox">
+                    <div class="hidden fixed z-30 inset-0 overflow-y-auto" data-lightbox-target="modal">
+                        <div
+                            class="flex items-center justify-center h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                            <div class="opacity-0 fixed inset-0 transition-opacity" data-lightbox-target="background">
+                                <div class="absolute inset-0 bg-gray-700 bg-opacity-75">
+                                    <div class="sm:block absolute top-0 left-0 pt-4 pl-4">
+                                        <span class="text-white font-medium"><!-- will hold the slide name --></span>
+                                    </div>
+                                    <div class="sm:block absolute top-0 right-0 pt-4 pr-4">
+                                        <a class="text-gray-100" data-action="click->lightbox#handleClose" href="#">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M6 18L18 6M6 6l12 12">
+                                                </path>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">​</span>
+                            <div
+                                class="relative inline-block rounded-lg text-left overflow-hidden transition-all my-8 align-middle w-3/4 inset-0">
+                                <turbo-frame data-lightbox-target="frame" id="attachment_gallery" src=""></turbo-frame>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mx-auto max-w-3xl lg:grid lg:max-w-5xl lg:grid-cols-3">
+                        <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                            <div>
+                                <div>
+                                    <div class="mb-6 py-3 xl:pb-0 xl:py-0 xl:mt-0 sm:mt-0 sm:pt-0">
+                                        <div>
+                                                <div>
+                                                    <div class="xl:pb-0 xl:py-0 xl:mt-0 sm:mt-0">
+                                                    <h2 class="sr-only">Description</h2>
+                                                    <div class="prose max-w-none">
+                                                        <h2>김OO님의 추모글</h2>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <section aria-labelledby="activity-title"
+                                            class="xl:mt-10">
+                                            <div class="container my-3">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr class="text-center table-dark">
+                                                            <th style="width:10%">번호</th>
+                                                            <th style="width:50%">제목</th>
+                                                            <th style="width:15%">글쓴이</th>
+                                                            <th>작성일시</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% if question_list %}
+                                                        {% for question in question_list.items %}
+                                                        <tr class="text-center">
+                                                            <!-- 번호 = 전체 게시물 개수 - (현재 페이지 -1) * 페이지당 게시물 개수 - 나열 인덱스 -->
+                                                            <td>{{ question_list.total - ((question_list.page-1) *
+                                                                question_list.per_page) - loop.index0 }}</td>
+                                                            <td class="text-start">
+                                                                <a style="overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                display: -webkit-box;
+                                                                height: 1.7em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */"
+                                                                    href="{{ url_for('question.detail', question_id=question.id) }}">{{
+                                                                    question.subject }}</a>
+                                                                <!-- 답변이 있으면 몇개있는지 알려주는 것 -->
+                                                                {% if question.answer_set|length > 0 %}
+                                                                <span class="text-danger small mx-2">답변 : {{
+                                                                    question.answer_set|length }}</span>
+                                                                {% endif %}
+                                                            </td>
+                                                            <td>{{ question.user.username }}</td>
+                                                            <td>{{ question.create_date|datetime }}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                        {% else %}
+                                                        <tr>
+                                                            <td colspan="3">질문이 없습니다.</td>
+                                                        </tr>
+                                                        {% endif %}
+                                                    </tbody>
+                                                </table>
+                                                <!-- 페이징처리 시작 -->
+                                                <ul class="pagination justify-content-center">
+                                                    <!-- 이전페이지 -->
+                                                    {% if question_list.has_prev %}
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="background-color: #FCD477 !important;
+                                                        color: black !important;"
+                                                            href="?page={{ question_list.prev_num }}">이전</a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled ">
+                                                        <a class="page-link" style="border: 1px solid #FCD477 !important;" tabindex="-1" aria-disabled="true"
+                                                            href="javascript:void(0)">이전</a>
+                                                    </li>
+                                                    {% endif %}
+                                                    <!-- 페이지번호 -->
+                                                    {% for page_num in question_list.iter_pages() %}
+                                                    {% if page_num %}
+                                                    {% if page_num != question_list.page %}
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="background-color: #FCD477; color: rgb(115, 115, 115);" href="?page={{ page_num }}">{{ page_num
+                                                            }}</a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li class="page-item active" aria-current="page">
+                                                        <a class="page-link" style="background-color: #FCD477 !important;
+                                                        color: black !important;
+                                                        border: 1px solid #FCD477 !important;" href="javascript:void(0)">{{ page_num
+                                                            }}</a>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% else %}
+                                                    <li class="disabled">
+                                                        <a class="page-link" style="background-color: #FCD477 !important;
+                                                        color: black !important;" href="javascript:void(0)">...</a>
+                                                    </li>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    <!-- 다음페이지 -->
+                                                    {% if question_list.has_next %}
+                                                    <li class="page-item">
+                                                        <a class="page-link" style="background-color: #FCD477 !important;
+                                                        color: black !important;"
+                                                            href="?page={{ question_list.next_num }}">다음</a>
+                                                    </li>
+                                                    {% else %}
+                                                    <li class="page-item disabled">
+                                                        <a class="page-link" style="border: 1px solid #FCD477 !important;" tabindex="-1" aria-disabled="true"
+                                                            href="javascript:void(0)">다음</a>
+                                                    </li>
+                                                    {% endif %}
+                                                </ul>
+                                               
+                                            </div>
+
+                                        </section>
+                                    </div>
+
+                                    <aside class="lg:mt-8 lg:hidden border-t border-gray-200">
+                                        <div class="space-y-5 pt-6">
+                                            <div class="flex items-center space-x-2">
+                                                <!-- Heroicon name: mini/lock-open -->
+                                                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M14.5 1A4.5 4.5 0 0010 5.5V9H3a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-1.5V5.5a3 3 0 116 0v2.75a.75.75 0 001.5 0V5.5A4.5 4.5 0 0014.5 1z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="text-sm font-medium text-green-700">전체공개</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <!-- Heroicon name: mini/chat-bubble-left-ellipsis -->
+                                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 2c-2.236 0-4.43.18-6.57.524C1.993 2.755 1 4.014 1 5.426v5.148c0 1.413.993 2.67 2.43 2.902.848.137 1.705.248 2.57.331v3.443a.75.75 0 001.28.53l3.58-3.579a.78.78 0 01.527-.224 41.202 41.202 0 005.183-.5c1.437-.232 2.43-1.49 2.43-2.903V5.426c0-1.413-.993-2.67-2.43-2.902A41.289 41.289 0 0010 2zm0 7a1 1 0 100-2 1 1 0 000 2zM8 8a1 1 0 11-2 0 1 1 0 012 0zm5 1a1 1 0 100-2 1 1 0 000 2z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="text-sm font-medium text-gray-900">0개의 추모글</span>
+                                            </div>
+                                            <div class="flex items-center space-x-2">
+                                                <!-- Heroicon name: mini/calendar -->
+                                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd"
+                                                        d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="text-sm font-medium text-gray-900">OOOO년 OO월 OO일</span>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+                                            <div>
+                                                <h2 class="text-sm font-medium text-gray-500">추모공간 관리자</h2>
+                                                <ul role="list" class="mt-3 space-y-3">
+                                                    <li class="flex justify-start">
+                                                        <a href="#" class="flex items-center space-x-3">
+                                                            <div class="flex-shrink-0">
+                                                                <!-- <img class="flex h-10 w-10 items-center justify-center rounded-full" src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png"> -->
+                                                                <div
+                                                                    class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-sm font-medium text-gray-900">김△△</div>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-8 border-t border-gray-200 py-6">
+                                            <a href="" class="btn-secondary">
+                                                문의 및 피드백
+                                            </a>
+                                        </div>
+                                    </aside>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <aside class="hidden lg:block lg:pl-8 mb-5">
+                            <h2 class="sr-only">Details</h2>
+                            <div class="space-y-5">
+                                <div class="flex items-center space-x-2">
+                                    <!-- Heroicon name: mini/lock-open -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 h-5 w-5 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                    </path>
+                  </svg>
+                                    <span class="text-sm font-medium text-red-700">비공개</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-sm font-medium text-gray-900">313개의 추모글</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <!-- Heroicon name: mini/calendar -->
+                  <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm font-medium text-gray-900"><time datetime="2020-12-02">2023년 6월 7일에 개설</time></span>
+                </div>
+              </div>
+              <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+                <div>
+                  <h2 class="text-sm font-medium text-gray-500">추모공간 관리자</h2>
+                  <ul role="list" class="mt-3 space-y-3">
+                    <li class="flex justify-start">
+                      <a href="#" class="flex items-center space-x-3">
+                        <div class="flex-shrink-0">
+                          
+                         
+                          <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                          src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png" />
+                         
+                          
+                         
+                        </div>
+                        {% if g.user %}
+                        <div class="text-sm font-medium text-gray-900">{{ g.user.username }}님</div>
+                        {% endif %}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space-y-8 border-t border-black py-6">
+                <a href="" class="btn-secondary">
+                  문의 및 피드백
+                </a>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+            </div>
+    </div>
+    </main>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='assets/js/jquery-3.6.1.min.js')}}"></script>
+<script>
+    $(function () {
+        $(document).mousedown(function (e) {
+            if ($("#togglemenu").is(":visible")) {
+                $("#togglemenu").each(function () {
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                        && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                    } else {
+                        $("#togglemenu").hide();
+                    }
+                });
+            }
+        });
+
+        $("#user-menu-button").click(function () {
+            $("#togglemenu").show();
+        });
+    });
+
+    $(function () {
+        $(document).mousedown(function (e) {
+            if ($("#mobiletoggle").is(":visible")) {
+                $("#mobiletoggle").each(function () {
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                        && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                    } else {
+                        $("#mobiletoggle").hide();
+                    }
+                });
+            }
+        });
+
+        $("#mobilemenu").click(function () {
+            $("#mobiletoggle").show();
+        });
+    });
+
+    $(function () {
+        $(document).ready(function () {
+            $('#uploadButton').on('click', function () {
+                $('#uploadInput').click();
+            });
+
+            /*$('#uploadInput').on('change', function() {
+              var file = $(this).prop('files')[0];
+              // 업로드한 파일 처리 로직 추가
+              //console.log('업로드한 파일:', file);
+            });*/
+        });
+    });
+
+
+
+    /* $(document).ready(function() {
+       $("#comment_question").on("change", function() {
+           var selectedOption = $(this).val();
+           $("#body").val(selectedOption);
+       });
+   });*/
+</script>
+{% endblock %}
+
+</html>

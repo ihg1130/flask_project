@@ -1,98 +1,244 @@
 <!DOCTYPE html>
 <html lang="ko">
+    {% block content %}
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>세계의 미술관</title>
-    <link href="css/my.css" rel="stylesheet">
-    <script src="js/jquery-1.12.3.js"></script>
-    <script src="js/js.js" defer="defer"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='my.css') }}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모두의 추억 - 하늘 거울</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i"
+    rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="../static/assets/css/tailwind.css" data-turbo-track="reload" />
 </head>
+
 <body>
-    <header class="all">
-        <div id="header_div" class="wrap">
-            <div class="logo">
-                <a href="#"><img src="{{url_for('static', filename='logo.jpg')}}"></a>
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div id="logo">
+        <h1><a href="{{ url_for('main.index') }}">하늘 거울</a></h1>
+      </div>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('auth.login') }}">시작하기</a></li>
+          <li><a class="nav-link scrollto" href="#about">소개</a></li>
+          <li><a class="nav-link scrollto" href="#features">기능</a></li>
+          <li><a class="nav-link scrollto" href="#pricing">이용비용</a></li>
+          <li><a class="nav-link scrollto" href="#contact">문의하기</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <section id="hero" class="vh-100">
+    <div class="hero-text" data-aos="zoom-out">
+      <h2>소중한 사람과의 추억</h2>
+      <p>하늘 거울에서 나누세요.</p>
+      {% if g.user %}
+      <a href="{{ url_for('question.create') }}" class="btn-get-started scrollto">시작하기</a>
+    
+      {% else %}
+      <a href="{{ url_for('auth.login') }}" class="btn-get-started scrollto">시작하기</a>
+      {% endif %}
+    </div>
+  </section>
+
+  <main id="main">
+    <section id="about" class="section-bg">
+      <div class="container-fluid" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title pt-4">소개</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">
+            기억하고 싶은 순간과 사진만 있다면, 어디서든 볼수 있습니다.<br>
+            사랑하는 사람, 보고싶은 사람, 기억하고 싶은 사람 누구든지 모읍니다.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 about-img" data-aos="fade-right" dat-aos-delay="100">
+            <img class="rounded-4" style="height:511px; margin-right:30px;" src="../static/assets/img/about_photo.jpg" alt="">
+          </div>
+          <div class="col-lg-6 content" data-aos="fade-left" dat-aos-delay="100">
+            <h2 class="mt-5 fs-2">기억하고픈 사람이나, 기억했으면 하는 장소,<br> 어떤 순간이든 입력해주세요.</h2>
+            <h3 class="mt-5 fs-4">하늘 거울에서는 어디서든 추억할 수 있도록 추억 공간을 만들어 드립니다.</h3>
+            <ul class="mt-5 fs-5">
+              <li><i class="bi bi-check-circle"></i> 사랑하고 존경하는 분을 추모할 수 있습니다. </li>
+              <li><i class="bi bi-check-circle"></i> 사랑하고 존경하는 사람과 함께했던 순간을 저장하세요.</li>
+              <li><i class="bi bi-check-circle"></i> 공간 주소를 공유하여 더욱 많은 사람이 기억 할 수 있도록 하세요.</li>
+            </ul>
+            <!-- <a href="" class="btn-get-started scrollto">시작하기</a> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="vh-100">
+      <div class="relative overflow-hidden pt-16 pb-32">
+        <div aria-hidden="true" class="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-gray-100"></div>
+        <!--    section 1-->
+        <div class="relative">
+          <div class="lg:mx-auto lg:grid lg:max-w-7xl lg:grid-flow-col-dense lg:grid-cols-2 lg:gap-12 lg:px-8">
+            <div class="mx-auto max-w-xl px-4 sm:px-6 lg:mx-0 lg:max-w-none lg:py-32 lg:px-0">
+              <div>
+                  <span class="flex h-12 w-12 items-center justify-center rounded-md bg-black">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6 text-white">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"></path>
+                    </svg>
+                  </span>
+              </div>
+              <div>
+                <div class="mt-6">
+                  <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white">온라인 추모공간이란?</h2>
+                  <p class="text-sm sm:text-lg mt-4 text-white" style=" word-break: keep-all;">
+                    세상을 떠난 사람을 기억하고 추모할 수 있는 공간입니다.<br><br>
+                    그리운 이에 대한 추억과 이야기를 공유하고 함께 슬픔을 나누며
+                    언제 어디서나 추모할 수 있습니다. <br><br>
+                    우리의 마음속에 남아있는 추억을 함께 기록하고 공유해보세요. 사랑하는 사람에 대한 기억을 지켜줄 공간이 되어드리겠습니다.
+                  </p>
+                  <div class="mt-6">
+                    <a href="#" class="btn-primary bg-black text-white sm:text-md text-sm sm:p-2 sm:px-4 sm:py-2" data-turbo="false">
+                      추모공간 시작하기
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <nav>
-                <ul class="menu">
-                    <li><a href="{{ url_for('main.index1')}}">소장처별</a>
-                        <ul class="submenu">
-                            <li><a href="#">한국</a></li>
-                            <li><a href="#">프랑스</a></li>
-                            <li><a href="#">이탈리아</a></li>
-                            <li><a href="#">독일</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">장르별</a>
-                        <ul class="submenu">
-                            <li><a href="#">회화</a></li>
-                            <li><a href="#">판화</a></li>
-                            <li><a href="#">공예/고대유물</a></li>
-                            <li><a href="#">그외</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">테마별</a>
-                        <ul class="submenu">
-                            <li><a href="#">초상화/인물</a></li>
-                            <li><a href="#">종교</a></li>
-                            <li><a href="#">신화/문학</a></li>
-                            <li><a href="#">일상/스포츠</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">시대별</a>
-                        <ul class="submenu">
-                            <li><a href="#">1900년이전</a></li>
-                            <li><a href="#">1900년대</a></li>
-                            <li><a href="#">현대</a></li>
-                            <li><a href="#">그외</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+            <div class="mt-12 sm:mt-16 lg:mt-0">
+              <div class="-mr-48 pl-4 sm:pl-6 md:-mr-16 relative m-0 h-full px-0">
+                <img class="w-full rounded-xl shadow-xl lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none" src="../static/assets/img/memorial_page.png">
+              </div>
+            </div>
+          </div>
         </div>
-    </header>
-    <div class="clear"></div>
+    </section>
 
-    <!-- 이미지 슬라이드 -->
-    <div id="img_slide" class="wrap">
-        <div class="slide">
-        <img src="{{url_for('static', filename='1.jpg')}}" alt="hurb"></a>
-        <img src="images/crisis.png" alt="crisis"></a>
-        <img src="images/wine.png" alt="wine"></a>
+    <section id="pricing" class="section-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title">이용비용</h3>
+          <span class="section-divider"></span>
+          <p class="section-description">합리적인 가격으로 여러분에게 기억공간을 마련해드리겠습니다.</p>
         </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-4 col-md-6">
+            <div class="box">
+              <h3>무료</h3>
+              <h4><sup>₩</sup>0<span> /월</span></h4>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 기억공간 제작</li>
+                <li><i class="bi bi-check-circle"></i> 공유코드 제공</li>
+                <li><br></li>
+                <li><br> </li>
+                <li><br></li>
+              </ul>
+              <a href="#" class="get-started-btn">시작하기</a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="box featured">
+              <h3>기억하고픈</h3>
+              <h4><sup>₩</sup>10000<span> /월</span></h4>
+              <ul>
+                <li><i class="bi bi-check-circle"></i> 공간 커스텀 가능</li>
+                <li><i class="bi bi-check-circle"></i> 1GB 저장공간 제공</li>
+                <li><i class="bi bi-check-circle"></i> 전용 URL 제공</li>
+                <li><i class="bi bi-check-circle"></i> 영상 업로드 가능</li>
+                <li><br></li>
+              </ul>
+              <a href="#" class="get-started-btn">시작하기</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-4 col-md-4">
+            <div class="contact-about">
+              <h3>하늘 거울</h3>
+              <p>당신의 추억은 너무나 소중한 자산입니다. <br>그 추억을 저희는 언제든지 확인하고 보관할 수 있도록 해드리겠습니다!</p>
+              <!-- <div class="social-links">
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="info">
+              <div>
+                <i class="bi bi-geo-alt"></i>
+                <p>광주광역시<br>북구 하서로 85</p>
+              </div>
+
+              <div>
+                <i class="bi bi-envelope"></i>
+                <p>rbghks333@gmail.com<br>asdfsf@gmail.com</p>
+              </div>
+
+              <div>
+                <i class="bi bi-phone"></i>
+                <p>010-3169-9744<br>010-0000-0000</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="col-lg-5 col-md-8">
+            <div class="form">
+              <form action="" method="post" role="form" class="php-email-form">
+                <div class="row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="이름" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                  </div>
+                  <div class="form-group col-lg-6 mt-3 mt-lg-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="이메일" data-rule="email" data-msg="Please enter a valid email">
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="제목" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" placeholder="내용" required></textarea>
+                </div>
+                <div class="text-center mt-3"><button type="submit" title="Send Message">문의하기</button></div>
+              </form>
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 text-lg-start text-center">
+          <div class="copyright">
+            &copy; Copyright <strong>Polytech</strong>. All Rights Reserved
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
+            <a href="#" class="scrollto">홈</a>
+            <a href="#" class="scrollto">소개</a>
+            <a href="#">개인 정책</a>
+            <a href="#">이용약관</a>
+          </nav>
+        </div>
+      </div>
     </div>
-    <div class="clear"></div>
+  </footer>
 
-    <!-- 콘텐츠 -->
-    <div id="contents" class="wrap">
-     <div class="notice">
-        <div class="title">
-            <h3>공지사항</h3>
-        </div>
-        <table class="border">
-            <tr><td><a href="#">빈센트 반 고흐 작품 전시 안내</a></td></tr>
-            <tr><td><a href="#">ㅁㄴㄹㄴㄻㄴㄾㅊㅌㅊㅍ</a></td></tr>
-            <tr><td><a href="#">ㅂㅈㄷㄴㅇㄾㅊㅌㄴㅇㄹㄴㅇㄹ</a></td></tr>
-            <tr><td><a href="#">ㅁㄴㅇㄹㄴㅇㄹㄴㄹㅋㅌㅊㅌㅊㄴㄴ</a></td></tr>
-        </table>
-     </div>
-     <!-- 갤러리 -->
-     <div class="gallery">
-        <div class="title">
-            <h3>갤러리</h3>
-        </div>
-        <a href="#"><img src="images/1.jpg" alt="1"></a>
-        <a href="#"><img src="images/4.jpg" alt="2"></a>
-        <a href="#"><img src="images/3.jpg" alt="3"></a>
-     </div>
-    </div>
-    <div class="clear"></div>
-
-    <footer class="wrap">
-        풋터
-    </footer>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-chevron-up"></i></a>
+  <script src="../static/assets/js/main.js"></script>
 </body>
+{% endblock %}
 </html>

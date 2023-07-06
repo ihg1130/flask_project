@@ -1,0 +1,1253 @@
+{% extends 'base1.html' %}
+{% block content %}
+        <div class="flex min-w-0 flex-1 flex-col overflow-hidden">
+          <div class="relative z-0 flex flex-1 overflow-hidden">
+            <main class="bg-white relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
+              <article class="bg-white">
+                <!-- <div> -->
+                <div>
+                  <div>
+                    <!-- <img class="h-56 w-full object-cover" src=""> 배경 이미지 파일 -->
+                    <div class="h-56 w-full bg-black"></div>
+                  </div>
+                  <!-- <div style="position: relative" class="d-none d-sm-block">
+                  <div id="updateHeaderImageModal" class="modal">
+                    <div class=" modal-content" style="transform: translateY(0px);">
+                      <div class="relative bg-white rounded-lg">
+                        <div id="updateHeaderImageModalClose" class="close no-select">
+                          <div class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                          </div>
+                        </div>
+                        <div class="py-6 px-6 lg:px-8"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
+                </div>
+                <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                  <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
+                    <div class="flex">
+                      <span class="relative inline-block">
+                        {% for chumo in chumos %}
+                        <img class="h-36 w-36 rounded-full ring-4 ring-white sm:h-36 sm:w-36 bi bi-person-circle" src="data:image/jpeg;base64,{{ chumo.profile_data }}" alt="File Data">
+                      
+                        
+                          <span
+                            class="absolute bottom-0 right-0 block h-10 w-10 rounded-full bg-gray-100 ring-2 ring-white hover:bg-gray-300 cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                              class="w-6 h-6 text-gray-600 absolute" style="top: 6px; left: 8px">
+                              <path d="M12 9a3.75 3.75 0 100 7.5A3.75 3.75 0 0012 9z"></path>
+                              <path fill-rule="evenodd"
+                                d="M9.344 3.071a49.52 49.52 0 015.312 0c.967.052 1.83.585 2.332 1.39l.821 1.317c.24.383.645.643 1.11.71.386.054.77.113 1.152.177 1.432.239 2.429 1.493 2.429 2.909V18a3 3 0 01-3 3h-15a3 3 0 01-3-3V9.574c0-1.416.997-2.67 2.429-2.909.382-.064.766-.123 1.151-.178a1.56 1.56 0 001.11-.71l.822-1.315a2.942 2.942 0 012.332-1.39zM6.75 12.75a5.25 5.25 0 1110.5 0 5.25 5.25 0 01-10.5 0zm12-1.5a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                clip-rule="evenodd"></path>
+                            </svg>
+                          </span>
+                        
+                      </span>
+                    </div>
+                    <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
+                      <div class="mt-12 min-w-0 flex-1 sm:hidden 2xl:block">
+                        
+                        <h1 class="truncate text-2xl font-bold text-gray-900">{{ chumo.name }}</h1>
+                        <p class="text-sm font-medium text-gray-500 mt-3">{{ chumo.birth }}~{{ chumo.death }}</p>
+                        {% endfor %}
+                       
+                      </div>
+                      <div class="justify-stretch mt-6 flex space-x-2 sm:space-x-4">
+                        <div class="flex h-full">
+                          <div id="notificationModal" class="modal">
+                            <div id="notification-modal" class=" modal-content" style="transform: translateY(0px);">
+                              <div class="relative bg-white rounded-lg">
+                                <div id="modalClose" class="close no-select">
+                                  <div
+                                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                      xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                    </svg>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- <div class="flex h-full">
+                        <form class="button_to" method="get" action="/memorials/133977/settings"></form>
+                          <button id="shareBtn" class="modal-trigger no-select btn-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 -ml-1 mr-2 h-5 w-5 text-gray-400">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"></path>
+                            </svg>
+                            <span>공유</span>
+                          </button>
+                        </form> 
+                      </div>   
+
+                      <form class="button_to" method="get" action="/memorials/133977/settings">
+                        <button class="btn-secondary" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 -ml-1 mr-2 h-5 w-5 text-gray-400">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"></path>
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                        <span>관리</span>
+                        </button>
+                      </form>      -->
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+        
+        <!-- Tabs -->
+        <div class="mt-6 sm:mt-2 2xl:mt-5">
+          <div class="border-b border-gray-200">
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+              <nav class="-mb-px flex space-x-8" id="tab-button-nav" aria-label="Tabs">
+                <!-- Current: "border-pink-500 text-gray-900", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
+                <a class="border-black text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-tab-section="tab-section-1">홈</a>
+                  <a href="{{ url_for('question._list') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-turbo="false" data-tab-section="tab-section-2">추모글</a>
+                <a href="{{ url_for('question.gallery') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-turbo="false" data-tab-section="tab-section-2">사진첩</a>
+                <a href="{{ url_for('question.timeline') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                  data-turbo="false" data-tab-section="tab-section-3">타임라인</a>
+              </nav>
+            </div>
+          </div>
+        </div>
+
+        <!-- home list -->
+        <div class="mx-auto mt-6 mb-6 max-w-5xl px-4 sm:px-6 lg:px-8 tab-section" id="tab-section-1" data-controller="lightbox">
+          <div class="hidden fixed z-30 inset-0 overflow-y-auto" data-lightbox-target="modal">
+            <div class="flex items-center justify-center h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <div class="opacity-0 fixed inset-0 transition-opacity" data-lightbox-target="background">
+                <div class="absolute inset-0 bg-gray-700 bg-opacity-75">
+                  <div class="sm:block absolute top-0 left-0 pt-4 pl-4">
+                    <span class="text-white font-medium"><!-- will hold the slide name --></span>
+                  </div>
+                  <div class="sm:block absolute top-0 right-0 pt-4 pr-4">
+                    <a class="text-gray-100" data-action="click->lightbox#handleClose" href="#">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">​</span>
+              <div
+                class="relative inline-block rounded-lg text-left overflow-hidden transition-all my-8 align-middle w-3/4 inset-0">
+                <turbo-frame data-lightbox-target="frame" id="attachment_gallery" src=""></turbo-frame>
+              </div>
+            </div>
+          </div>
+          <div class="mx-auto max-w-3xl lg:grid lg:max-w-5xl lg:grid-cols-3">
+            <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+              <div>
+                <div>
+                  <div class="mb-6 py-3 xl:pb-0 xl:py-0 xl:mt-0 sm:mt-0 sm:pt-0">
+                    
+                      
+                        <div class="py-3 xl:pb-0 xl:py-0 xl:mt-0 sm:mt-0">
+                          <h2 class="sr-only">Description</h2>
+                          <div class="prose max-w-none">
+                            {% if g.user %}
+                            <h2>{{ g.user.username }}님의 추모공간</h2>
+                            <p>
+                              {% for chumo in chumos %}
+                              {{ chumo.content }}
+                              {% endfor %}
+                            </p>
+                          </div>
+                        </div>
+                       
+                    
+                    <section aria-labelledby="activity-title" class="mt-6 xl:mt-10">
+                      <div>
+                        <div class="divide-y divide-gray-200">
+                          <div class="pb-4">
+                            <div class="pt-3">
+                            
+                              <div >
+                                <h2 class="text-lg mb-3 mt-10 font-medium text-gray-900 font-bold"
+                                  style="font-size: 1.5em">추억과 애도 공유하기</h2>
+                                <div class="mt-5" id="add-review" data-matching-link="#add-review-link">
+                                  <div class="min-w-0 flex-1">
+                                    <form method="post" enctype="multipart/form-data" class="new_comment">
+                                        {{ form.csrf_token }}
+                                      <div>
+                                        <label for="comment" class="sr-only">Comment</label>
+                                        <div class="w-full">
+                                          <div class="flex flex-col items-center justify-center w-auto m-auto border border-2"
+                                              id="uploadButton" style="cursor: pointer; border-style:dotted;">
+                                              <svg aria-hidden="true" class="w-10 h-10 mt-10 mb-2 text-gray-400" fill="none"
+                                                  stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                                                  </path>
+                                              </svg>
+                                              <p class="mb-4 text-sm text-gray-500">사진 또는 동영상 업로드</p>
+                                          </div>
+                                          <input type="file" id="uploadInput" name="file_data" value="{{ form.file_data.data or '' }}" style="display: none;">
+                                          
+                                      </div>
+                                      
+                                        <div class="pt-4">
+                                          <select
+                                            class="block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm"
+                                            name="subject" id="subject">
+                                            <option value="자유형식">자유형식</option>
+                                            <option value="{{ g.user.username }}님을 처음 봤을 때를 기억하나요? 첫인상이 어땠나요?">{{ g.user.username }}님을 처음 봤을 때를 기억하나요? 첫인상이
+                                              어땠나요?</option>
+                                            <option value="{{ g.user.username }}님은 당신의 삶에 어떤 영향을 미쳤나요?">{{ g.user.username }}님은 당신의 삶에 어떤 영향을 미쳤나요?</option>
+                                            <option value="{{ g.user.username }}님을 떠올리면 항상 생각나는 것은 무엇인가요?">{{ g.user.username }}님을 떠올리면 항상 생각나는 것은 무엇인가요?
+                                            </option>
+                                            <option value="{{ g.user.username }}님이 가장 좋아했던 사진과 스토리를 공유해주세요.">{{ g.user.username }}님이 가장 좋아했던 사진과 스토리를
+                                              공유해주세요.</option>
+                                            <option value="{{ g.user.username }}님이 했던 일 중 가장 자랑스러워 했던 일은 무엇인가요?">{{ g.user.username }}님이 했던 일 중 가장 자랑스러워 했던
+                                              일은 무엇인가요?</option>
+                                            <option value="{{ g.user.username }}님이 가장 사랑했던 것은 무엇인가요?">{{ g.user.username }}님이 가장 사랑했던 것은 무엇인가요?</option>
+                                            <option value="{{ g.user.username }}님이 가장 좋아했던 음식은 무엇인가요?">{{ g.user.username }}님이 가장 좋아했던 음식은 무엇인가요?</option>
+                                            <option value="{{ g.user.username }}님의 취미나 여가활동은 무엇이 있었나요?">{{ g.user.username }}님의 취미나 여가활동은 무엇이 있었나요?</option>
+                                            <option value="{{ g.user.username }}님이 싫어하는 것은 무엇이었나요?">{{ g.user.username }}님이 싫어하는 것은 무엇이었나요?</option>
+                                            <option value="{{ g.user.username }}님과 함께한 재미있거나 웃긴 추억은 무엇인가요?">{{ g.user.username }}님과 함께한 재미있거나 웃긴 추억은 무엇인가요?
+                                            </option>
+                                            <option value="{{ g.user.username }}님과 시간을 보낼 때 주로 무슨 이야기를 나누었나요?">{{ g.user.username }}님과 시간을 보낼 때 주로 무슨 이야기를
+                                              나누었나요?</option>
+                                            <option value="{{ g.user.username }}님이 가장 그리울 때는 언제인가요? 어떤 것이 그리운가요?">{{ g.user.username }}님이 가장 그리울 때는 언제인가요?
+                                              어떤 것이 그리운가요?</option>
+                                            <option value="{{ g.user.username }}님은 언제 가장 행복해보였나요?">{{ g.user.username }}님은 언제 가장 행복해보였나요?</option>
+                                            <option value="{{ g.user.username }}님과 함께 했던 즐거운 추억이 있다면 공유해주세요.">{{ g.user.username }}님과 함께 했던 즐거운 추억이 있다면
+                                              공유해주세요.</option>
+                                            <option value="{{ g.user.username }}님은 어떤 때 가장 멋있어 보였나요?">{{ g.user.username }}님은 어떤 때 가장 멋있어 보였나요?</option>
+                                            <option value="{{ g.user.username }}님은 어떤 사람이었나요?">{{ g.user.username }}님은 어떤 사람이었나요?</option>
+                                            <option value="{{ g.user.username }}님 하면 가장 먼저 떠오르는 것은 어떤 것인가요?">{{ g.user.username }}님 하면 가장 먼저 떠오르는 것은 어떤
+                                              것인가요?</option>
+                                          </select>
+                                        </div>
+                                        <input type="text" id="content" name="content" value="{{ form.content.data or '' }}"
+                                          class="mt-5 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm"
+                                          placeholder="{{ g.user.username }}님과 함께한 소중한 추억이나 마지막으로 하고 싶은 이야기를 공유해요." row="5"
+                                          style="min-height: 180px !important">
+                                      </div>
+                                      <div class="grid grid-cols-6 gap-6 mt-4">
+                                        <div class="col-span-6 sm:col-span-3">
+                                          <div class="flex justify-between">
+                                            <label for="name"
+                                              class="block text-sm font-medium text-gray-700">이름</label>
+                                          </div>
+                                          <input type="text" name="name" id="name" value="{{ form.name.data or '' }}" autocomplete="given-name"
+                                            class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm"
+                                            >
+                                        </div>
+                                        <div class="col-span-6 sm:col-span-3" data-controller="common">
+                                          {% for chumo in chumos %}
+                                          <label for="country" class="block text-sm font-medium text-gray-700">{{ chumo.name }}님과의
+                                            관계</label>
+                                          <select
+                                            class="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm"
+                                            data-action="change->common#relationshipChange" name="relation"                                             id="relation">
+                                            <option value="관계">{{ chumo.name }}님과의 관계</option>
+                                            <option value="가족">가족</option>
+                                            <option value="친구/지인">친구/지인</option>
+                                            <option value="직장인연">직장인연</option>
+                                            {% endfor %}
+                                          </select>
+                                          <input
+                                            class="mt-2 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm hidden"
+                                            id="relation" type="text"
+                                            name="relation">
+                                        </div>
+                                      </div>
+                                      <div class="mt-6 flex items-center justify-end space-x-4">
+                                        <button type="submit" class="btn-primary bg-black text-white">작성하기</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- <div class="right-corner-container">
+                      <a href="#add-review" id="add-review-link" class="no-hover right-corner-container-button btn-primary" style="padding: 0">
+                        <span class="short-text">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="margin-top: 13px; margin-left: 14px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"></path>
+                          </svg>
+                        </span>
+                      </a>
+                    </div>   -->
+                      </div>
+                    </section>
+                  </div>
+
+                  <aside class="lg:mt-8 lg:hidden border-t border-gray-200">
+                    <div class="space-y-5 pt-6">
+                      <div class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" class="w-6 h-6 h-5 w-5 text-red-500">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                          </path>
+                        </svg>
+                        <span class="text-sm font-medium text-red-700">비공개</span>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <!-- Heroicon name: mini/chat-bubble-left-ellipsis -->
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                          fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd"
+                            d="M10 2c-2.236 0-4.43.18-6.57.524C1.993 2.755 1 4.014 1 5.426v5.148c0 1.413.993 2.67 2.43 2.902.848.137 1.705.248 2.57.331v3.443a.75.75 0 001.28.53l3.58-3.579a.78.78 0 01.527-.224 41.202 41.202 0 005.183-.5c1.437-.232 2.43-1.49 2.43-2.903V5.426c0-1.413-.993-2.67-2.43-2.902A41.289 41.289 0 0010 2zm0 7a1 1 0 100-2 1 1 0 000 2zM8 8a1 1 0 11-2 0 1 1 0 012 0zm5 1a1 1 0 100-2 1 1 0 000 2z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-900">0개의 추모글</span>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                        <!-- Heroicon name: mini/calendar -->
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                          fill="currentColor" aria-hidden="true">
+                          <path fill-rule="evenodd"
+                            d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                            clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-sm font-medium text-gray-900">OOO년 OO월 OO일</span>
+                      </div>
+                    </div>
+                    <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+                      <div>
+                        <h2 class="text-sm font-medium text-gray-500">추모공간 관리자</h2>
+                        <ul role="list" class="mt-3 space-y-3">
+                          <li class="flex justify-start">
+                            <a href="#" class="flex items-center space-x-3">
+                              <div class="flex-shrink-0">
+                                <!-- <img class="flex h-10 w-10 items-center justify-center rounded-full" src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png"> -->
+                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100"></div>
+                              </div>
+                              <div class="text-sm font-medium text-gray-900">{{ g.user.username }}님</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="space-y-8 border-t border-gray-200 py-6">
+                      <a href="" class="btn-secondary">
+                        문의 및 피드백
+                      </a>
+                    </div>
+                  </aside>
+
+                </div>
+              </div>
+            </div>
+
+            <aside class="hidden lg:block lg:pl-8 mb-5">
+              <h2 class="sr-only">Details</h2>
+              <div class="space-y-5">
+                <div class="flex items-center space-x-2">
+                  <!-- Heroicon name: mini/lock-open -->
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 h-5 w-5 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                    </path>
+                  </svg>
+                  <span class="text-sm font-medium text-red-700">비공개</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <span class="text-sm font-medium text-gray-900">313개의 추모글</span>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                  <!-- Heroicon name: mini/calendar -->
+                  <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                      d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                  <span class="text-sm font-medium text-gray-900"><time datetime="2020-12-02">2023년 6월 7일에 개설</time></span>
+                </div>
+              </div>
+              <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+                <div>
+                  <h2 class="text-sm font-medium text-gray-500">추모공간 관리자</h2>
+                  <ul role="list" class="mt-3 space-y-3">
+                    <li class="flex justify-start">
+                      <a href="#" class="flex items-center space-x-3">
+                        <div class="flex-shrink-0">
+                          
+                         
+                          <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                          src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png" />
+                         
+                          
+                         
+                        </div>
+                        <div class="text-sm font-medium text-gray-900">{{ g.user.username }}님</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space-y-8 border-t border-black py-6">
+                <a href="" class="btn-secondary">
+                  문의 및 피드백
+                </a>
+              </div>
+            </aside>
+          </div>
+        </div>
+
+        <!-- photo list -->
+        <div class="mx-auto mt-6 mb-6 max-w-5xl px-4 sm:px-6 lg:px-8 tab-section" id="tab-section-2" data-controller="lightbox" hidden>
+          
+        </div>
+
+        <!-- timeline list -->
+        <div class="mx-auto mt-6 mb-6 max-w-5xl px-4 sm:px-6 lg:px-8 tab-section" id="tab-section-3" data-controller="lightbox" hidden>
+          <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+            <div>
+              <div>
+                <div class="mb-6 py-3 xl:pb-0 xl:py-0 xl:mt-0 sm:mt-0 sm:pt-0">
+                  <div class="space-y-6">
+                    <div>
+                      <ul role="list" class="-mb-8">
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-indigo-500 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">1955년</time>
+                                  <time datetime="2020-09-20">2월</time>
+                                  <time datetime="2020-09-20">3일</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">서울 출생</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="ml-6 pt-6 max-w-md">
+                              <div>
+                                <img class="rounded-lg"
+                                  src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTRJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--92e128352c88503470d0d338d21ec019d83aed2d/Screen%20Shot%202022-12-08%20at%2012.23.13%20PM.png">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">1975년</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">서울 OO 고등학교 졸업</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="ml-6 pt-6 max-w-md">
+                              <div>
+                                <img class="rounded-lg"
+                                  src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaG9JIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--dff6d96aac87cf9acd896a181c2b31943a9e752e/Screen%20Shot%202022-12-07%20at%207.36.53%20PM.png">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">1976년</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">OO대학교 수석 입학</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">1980년</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">OO전자 입사</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="ml-6 pt-6 max-w-md">
+                              <div>
+                                <img class="rounded-lg"
+                                  src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--208ab66cd0a80812cea43df24d2c861558c3905e/Screen%20Shot%202022-12-08%20at%2012.25.52%20PM.png">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">1987년</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">OO전자 근속상 수상</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">2000년</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">2000년 가장 유망한 전자상거래 업체 상 수상</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">2005년</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">OOO재단에 10억 기부</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+                            <span class="absolute top-4 left-3 -ml-px h-full w-0.5 bg-gray-200"
+                              aria-hidden="true"></span>
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-4 w-4 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">2012년</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">은퇴 후 OO재단 설립</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="ml-6 pt-6 max-w-md">
+                              <div>
+                                <img class="rounded-lg"
+                                  src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaGtJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a2088c7045301af963ec5950acfdab210abe376a/fund.jpeg">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="relative pb-8">
+
+                            <div class="relative flex space-x-2">
+                              <div>
+                                <span
+                                  class="h-6 w-6 rounded-full bg-red-400 flex items-center justify-center ring-8 ring-white">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="h-3 w-3 text-white">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5">
+                                    </path>
+                                  </svg>
+                                </span>
+                              </div>
+                              <div class="flex min-w-0 flex-1 space-x-4 pt-1.5">
+                                <div class="whitespace-nowrap text-right text-sm text-gray-500">
+                                  <time datetime="2020-09-20">2021년</time>
+                                  <time datetime="2020-09-20">3월</time>
+                                  <time datetime="2020-09-20">10일</time>
+                                </div>
+                                <div>
+                                  <p class="text-sm text-gray-900 font-bold">별세</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  <script type="text/javascript" charset="utf-8">
+                    // Developer Info - Arjun (https://github.com/arjun0108)
+                    document.addEventListener('turbo:load', function () {
+
+                      $('.timelineFormBtn').click(function (event) {
+
+                        $(this).parent().find(".timelineFormModal").fadeIn('slow');
+                        (function fun() {
+                          $('.modal-content').css({ 'transform': 'translateY(-50px)' });
+                        })();
+                        event.stopPropagation();
+                      });
+
+                      $('.timelineFormModalClose').click(function () {
+                        hideModal();
+                      });
+
+                      // Do nothing when clicking on the modal content
+                      $('.modal-content').click(function (event) {
+                        event.stopPropagation();
+                      });
+
+                      function hideModal() {
+                        $('.timelineFormModal').fadeOut('fast');
+                        (function fun2() {
+                          $('.modal-content').css({ 'transform': 'translateY(0px)' });
+                        })();
+                      }
+
+                      $(document).on("click", function () {
+                        //click outside of ".nav__dropdown" class itself and menu will be hidden
+                        hideModal();
+                      });
+                    })
+
+                  </script>
+
+                </div>
+                <aside class="lg:mt-8 lg:hidden border-t border-gray-200">
+                  <h2 class="sr-only">Details</h2>
+                  <div class="space-y-5 pt-6">
+                    <div class="flex items-center space-x-2">
+                      <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                          d="M14.5 1A4.5 4.5 0 0010 5.5V9H3a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-1.5V5.5a3 3 0 116 0v2.75a.75.75 0 001.5 0V5.5A4.5 4.5 0 0014.5 1z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="text-sm font-medium text-green-700">전체공개</span>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                      <!-- Heroicon name: mini/chat-bubble-left-ellipsis -->
+                      <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                          d="M10 2c-2.236 0-4.43.18-6.57.524C1.993 2.755 1 4.014 1 5.426v5.148c0 1.413.993 2.67 2.43 2.902.848.137 1.705.248 2.57.331v3.443a.75.75 0 001.28.53l3.58-3.579a.78.78 0 01.527-.224 41.202 41.202 0 005.183-.5c1.437-.232 2.43-1.49 2.43-2.903V5.426c0-1.413-.993-2.67-2.43-2.902A41.289 41.289 0 0010 2zm0 7a1 1 0 100-2 1 1 0 000 2zM8 8a1 1 0 11-2 0 1 1 0 012 0zm5 1a1 1 0 100-2 1 1 0 000 2z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="text-sm font-medium text-gray-900">개의 추모글</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <!-- Heroicon name: mini/calendar -->
+                      <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                        fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                          d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                          clip-rule="evenodd"></path>
+                      </svg>
+                      <span class="text-sm font-medium text-gray-900">2021년 05월 09일</span>
+                    </div>
+                  </div>
+                  <div class="mt-6 space-y-8 border-t border-gray-200 pt-6">
+                    <div class="flex justify-between">
+                      <h2 class="text-sm font-medium text-gray-500">사진첩</h2>
+                      <a class="underline text-sm font-medium text-gray-500" data-turbo="false"
+                        href="/memorials/1/gallery">더보기</a>
+                    </div>
+                    <div class="carousel-container-sm">
+                      <div class="carousel-imgs">
+                        <img class="carousel-img-sm visible"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--299f1c52784d70f0241673e828ec61060d796f0d/Screen%20Shot%202022-12-08%20at%2012.23.13%20PM.png">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28b95b38df9f4befe871e4f2485926dfac876102/Screen%20Shot%202022-12-07%20at%207.36.53%20PM.png">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b589b0b05a6d1216514e54e1da00b76f4ce86514/Screen%20Shot%202021-05-10%20at%2022.09.25.jpg">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e848efe78b8c4b79e87f9335ba9d7872ccfc2725/Screen%20Shot%202021-05-10%20at%2022.09.46.jpg">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYW89IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6b1792d1b759aac3572d3bf7ed0fd3ec60f6de7/Screen%20Shot%202021-05-10%20at%2022.23.25.jpg">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08d3578c1793b676013e8e313f944c8772087cc2/Screen%20Shot%202021-05-10%20at%2022.31.53.jpg">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28c7b874471663cf97e098d313586c3929c8b09d/225D8B4258B8336E07.png">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4b64c454f4b7bf7af49fab5b12a664ec90fc050f/Screen%20Shot%202021-05-10%20at%2022.22.09.jpg">
+                        <img class="carousel-img-sm hidden"
+                          src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc07a78b51081141870f050348c83b70b195d5f2/style_61078d2817756.png">
+                      </div>
+                      <a class="prev_sm arrow_sm">❮</a>
+                      <a class="next_sm arrow_sm">❯</a>
+
+                    </div>
+
+
+                    <script type="text/javascript" charset="utf-8">
+                      document.addEventListener('turbo:load', function () {
+                        // Variables
+                        let prev_sm = document.querySelector('.prev_sm');
+                        let next_sm = document.querySelector('.next_sm');
+                        let imgs = document.querySelectorAll('.carousel-img-sm');
+                        let totalImgs = imgs.length;
+                        let imgPosition = 0;
+
+                        // Event Listeners
+                        next_sm.addEventListener('click', next_smImg);
+                        prev_sm.addEventListener('click', prev_smImg);
+
+                        // Update Position
+                        function updatePosition() {
+                          //   Images
+                          for (let img of imgs) {
+                            img.classList.remove('visible');
+                            img.classList.add('hidden');
+                          }
+                          imgs[imgPosition].classList.remove('hidden');
+                          imgs[imgPosition].classList.add('visible')
+
+                        }
+
+                        // Next Img
+                        function next_smImg() {
+                          if (imgPosition === totalImgs - 1) {
+                            imgPosition = 0;
+                          } else {
+                            imgPosition++;
+                          }
+                          updatePosition();
+                        }
+
+                        //Previous Image
+                        function prev_smImg() {
+                          if (imgPosition === 0) {
+                            imgPosition = totalImgs - 1;
+                          } else {
+                            imgPosition--;
+                          }
+                          updatePosition();
+                        }
+
+                      })
+                    </script>
+
+                    <style>
+                      * {
+                        margin: 0;
+                      }
+
+                      .carousel-container-sm {
+                        position: relative;
+                        margin: 0 auto;
+                        max-width: 600px;
+                      }
+
+                      .carouasel-container {
+                        box-shadow: 0 0 5px rgb(204, 204, 204);
+                        ;
+                      }
+
+                      .carousel-container-sm img {
+                        height: 200px;
+                        object-fit: unset;
+                        border-radius: 0.5em;
+                        margin: 0 auto;
+                      }
+
+                      .visible {
+                        display: block;
+                      }
+
+                      .arrow_sm {
+                        display: inline;
+                      }
+
+                      .prev_sm,
+                      .arrow_sm {
+                        cursor: pointer;
+                        position: absolute;
+                        top: 50%;
+                        width: auto;
+                        margin: -1.5em .3em 0 .3em;
+                        padding: 1em;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 1.2em;
+                        transition: 0.3s ease;
+                        border-radius: .5em;
+                        user-select: none;
+                        background-color: rgba(204, 204, 204, 0.3);
+                      }
+
+                      .next_sm {
+                        right: 0;
+                      }
+
+                      .prev_sm:hover,
+                      .next_sm:hover {
+                        box-shadow: 0 0 5px #fff;
+                        border: 1px solid #fff;
+                      }
+
+                      .slide-numbers {
+                        text-align: center;
+                        position: absolute;
+                        bottom: 1em;
+                        left: 45%;
+
+                      }
+                    </style>
+                  </div>
+                  <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+                    <div>
+                      <h2 class="text-sm font-medium text-gray-500">추모공간 관리자</h2>
+                      <ul role="list" class="mt-3 space-y-3">
+                        <li class="flex justify-start">
+                          <a href="#" class="flex items-center space-x-3">
+                            <div class="flex-shrink-0">
+                              <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                                src="https://www.rememberyou.kr/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3eb0f270dae1db28c94f4de9e633d5df56cd321f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2xxY0dWbk9oUnlaWE5wZW1WZmRHOWZiR2x0YVhSYkIya0NMQUZwQWl3QiIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--94f52beae57ffc1019ac2d428ac7a00421ce3e2c/Screen%20Shot%202022-09-19%20at%201.32.40%20PM.png">
+
+                            </div>
+                            <div class="text-sm font-medium text-gray-900">리멤버유</div>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="space-y-8 border-t border-gray-200 py-6">
+                    <a href="mailto:rememberyou.kr@gmail.com" class="btn-secondary">
+                      문의 및 피드백
+                    </a>
+                  </div>
+                </aside>
+              </div>
+            </div>
+            <section aria-labelledby="activity-title" class="mt-8 xl:mt-10">
+
+            </section>
+          </div>
+
+          <aside class="hidden lg:block lg:pl-8 mb-5">
+            <h2 class="sr-only">Details</h2>
+            <div class="space-y-5">
+              <div class="flex items-center space-x-2">
+                <!-- Heroicon name: mini/lock-open -->
+                <svg class="h-5 w-5 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M14.5 1A4.5 4.5 0 0010 5.5V9H3a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-1.5V5.5a3 3 0 116 0v2.75a.75.75 0 001.5 0V5.5A4.5 4.5 0 0014.5 1z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-sm font-medium text-green-700">전체공개</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-sm font-medium text-gray-900">개의 추모글</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <!-- Heroicon name: mini/calendar -->
+                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                  fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-sm font-medium text-gray-900"><time datetime="2020-12-02">2021년 05월 09일에
+                    개설</time></span>
+              </div>
+            </div>
+            <div class="mt-6 space-y-8 border-t border-gray-200 pt-6">
+              <!-- <div class="flex justify-between">
+                <h2 class="text-sm font-medium text-gray-500">사진첩</h2>
+                <a class="underline text-sm font-medium text-gray-500" data-turbo="false"
+                  href="/memorials/1/gallery">더보기</a>
+              </div>
+              <div class="carousel-container">
+                <div class="carousel-imgs">
+                  <img class="carousel-img visible"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaklJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--299f1c52784d70f0241673e828ec61060d796f0d/Screen%20Shot%202022-12-08%20at%2012.23.13%20PM.png">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28b95b38df9f4befe871e4f2485926dfac876102/Screen%20Shot%202022-12-07%20at%207.36.53%20PM.png">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b589b0b05a6d1216514e54e1da00b76f4ce86514/Screen%20Shot%202021-05-10%20at%2022.09.25.jpg">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e848efe78b8c4b79e87f9335ba9d7872ccfc2725/Screen%20Shot%202021-05-10%20at%2022.09.46.jpg">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYW89IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6b1792d1b759aac3572d3bf7ed0fd3ec60f6de7/Screen%20Shot%202021-05-10%20at%2022.23.25.jpg">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08d3578c1793b676013e8e313f944c8772087cc2/Screen%20Shot%202021-05-10%20at%2022.31.53.jpg">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28c7b874471663cf97e098d313586c3929c8b09d/225D8B4258B8336E07.png">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4b64c454f4b7bf7af49fab5b12a664ec90fc050f/Screen%20Shot%202021-05-10%20at%2022.22.09.jpg">
+                  <img class="carousel-img hidden"
+                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc07a78b51081141870f050348c83b70b195d5f2/style_61078d2817756.png">
+                </div>
+                <a class="prev arrow">❮</a>
+                <a class="next arrow">❯</a>
+
+              </div> -->
+              {% endif %}
+
+              <script type="text/javascript" charset="utf-8">
+                document.addEventListener('turbo:load', function () {
+                  // Variables
+                  let prev = document.querySelector('.prev');
+                  let next = document.querySelector('.next');
+                  let imgs = document.querySelectorAll('.carousel-img');
+                  let totalImgs = imgs.length;
+                  let imgPosition = 0;
+
+                  // Event Listeners
+                  next.addEventListener('click', nextImg);
+                  prev.addEventListener('click', prevImg);
+
+                  // Update Position
+                  function updatePosition() {
+                    //   Images
+                    for (let img of imgs) {
+                      img.classList.remove('visible');
+                      img.classList.add('hidden');
+                    }
+                    imgs[imgPosition].classList.remove('hidden');
+                    imgs[imgPosition].classList.add('visible')
+
+                  }
+
+                  // Next Img
+                  function nextImg() {
+                    if (imgPosition === totalImgs - 1) {
+                      imgPosition = 0;
+                    } else {
+                      imgPosition++;
+                    }
+                    updatePosition();
+                  }
+
+                  //Previous Image
+                  function prevImg() {
+                    if (imgPosition === 0) {
+                      imgPosition = totalImgs - 1;
+                    } else {
+                      imgPosition--;
+                    }
+                    updatePosition();
+                  }
+
+                })
+              </script>
+
+              <style>
+                * {
+                  margin: 0;
+                }
+
+                .carousel-container {
+                  position: relative;
+                  margin: 0 auto;
+                  max-width: 600px;
+                }
+
+                .carouasel-container {
+                  box-shadow: 0 0 5px rgb(204, 204, 204);
+                  ;
+                }
+
+                .carousel-container img {
+                  height: 200px;
+                  object-fit: unset;
+                  border-radius: 0.5em;
+                  margin: 0 auto;
+                }
+
+                .visible {
+                  display: block;
+                }
+
+                .arrow {
+                  display: inline;
+                }
+
+                .prev,
+                .arrow {
+                  cursor: pointer;
+                  position: absolute;
+                  top: 50%;
+                  width: auto;
+                  margin: -1.5em .3em 0 .3em;
+                  padding: 1em;
+                  color: white;
+                  font-weight: bold;
+                  font-size: 1.2em;
+                  transition: 0.3s ease;
+                  border-radius: .5em;
+                  user-select: none;
+                  background-color: rgba(204, 204, 204, 0.3);
+                }
+
+                .next {
+                  right: 0;
+                }
+
+                .prev:hover,
+                .next:hover {
+                  box-shadow: 0 0 5px #fff;
+                  border: 1px solid #fff;
+                }
+
+                .slide-numbers {
+                  text-align: center;
+                  position: absolute;
+                  bottom: 1em;
+                  left: 45%;
+
+                }
+              </style>
+            </div>
+            <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+              <div>
+                <h2 class="text-sm font-medium text-gray-500">추모공간 관리자</h2>
+                <ul role="list" class="mt-3 space-y-3">
+                  <li class="flex justify-start">
+                    <a href="#" class="flex items-center space-x-3">
+                      <div class="flex-shrink-0">
+                        <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                          src="https://www.rememberyou.kr/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3eb0f270dae1db28c94f4de9e633d5df56cd321f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2xxY0dWbk9oUnlaWE5wZW1WZmRHOWZiR2x0YVhSYkIya0NMQUZwQWl3QiIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--94f52beae57ffc1019ac2d428ac7a00421ce3e2c/Screen%20Shot%202022-09-19%20at%201.32.40%20PM.png">
+
+                      </div>
+                      <div class="text-sm font-medium text-gray-900">리멤버유</div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="space-y-8 border-t border-gray-200 py-6">
+              <a href="mailto:rememberyou.kr@gmail.com" class="btn-secondary">
+                문의 및 피드백
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+<script src="{{ url_for('static', filename='assets/js/jquery-3.6.1.min.js')}}"></script>
+<script>
+  $(function () {
+    $(document).mousedown(function (e) {
+      if ($("#togglemenu").is(":visible")) {
+        $("#togglemenu").each(function () {
+          var l_position = $(this).offset();
+          l_position.right = parseInt(l_position.left) + ($(this).width());
+          l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+          if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+            && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+          } else {
+            $("#togglemenu").hide();
+          }
+        });
+      }
+    });
+
+    $("#user-menu-button").click(function () {
+      $("#togglemenu").show();
+    });
+  });
+
+  $(function () {
+    $(document).mousedown(function (e) {
+      if ($("#mobiletoggle").is(":visible")) {
+        $("#mobiletoggle").each(function () {
+          var l_position = $(this).offset();
+          l_position.right = parseInt(l_position.left) + ($(this).width());
+          l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+          if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+            && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+          } else {
+            $("#mobiletoggle").hide();
+          }
+        });
+      }
+    });
+
+    $("#mobilemenu").click(function () {
+      $("#mobiletoggle").show();
+    });
+  });
+
+  const $nav = document.querySelector('#tab-button-nav')
+  const $sections = document.querySelectorAll('.tab-section');
+
+  $nav.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('tab-button')) {
+      return;
+    }
+
+    const focusedTabId = e.target.dataset.tabSection;
+
+    $sections.forEach(($section) => {
+      if ($section.id === focusedTabId) {
+        $section.removeAttribute('hidden');
+      } else {
+        $section.setAttribute('hidden', true);
+      }
+    });
+  });
+
+  $(function () {
+        $(document).ready(function () {
+            $('#uploadButton').on('click', function () {
+                $('#uploadInput').click();
+            });
+        });
+    });
+</script>
+{% endblock %}
+</html>

@@ -12,28 +12,6 @@ import config
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-
-
-
-
-app = Flask(__name__)
-mail = Mail(app)
-    
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'a4569677@gmail.com'
-app.config['MAIL_PASSWORD'] = '991027Baby~'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-
-    
-@app.route('/signup/')
-def index():
-    msg = Message('Hello', sender='a4569677@gmail.com', recipients=['ihg1130@naver.com'])
-    msg.body = 'Hello Flask'
-    mail.send(msg)
-    
-
 @bp.route('/signup/', methods=('GET', 'POST'))
 def signup():
     form = UserCreateForm()
@@ -45,11 +23,10 @@ def signup():
                         email=form.email.data)
             db.session.add(user)
             db.session.commit()
-            msg = Message('Hello', sender='a4569677@gmail.com', recipients=['ihg1130@naver.com'])
-            msg.body = 'Hello Flask'
-            mail.send(msg)
-            
-    return render_template('auth/signup.html', form=form)
+            return redirect(url_for('main.index'))
+        else:
+            flash('이미 존재하는 사용자입니다.')
+    return render_template('auth/signup1.html', form=form)
 
 
 @bp.route('/login/', methods=('GET', 'POST'))
@@ -71,7 +48,7 @@ def login():
             else:
                 return redirect(url_for('main.index'))
         flash(error)
-    return render_template('auth/login.html', form=form)
+    return render_template('login.html', form=form)
 
 # 로그인,로그아웃 세션 메소드(모든 라우팅 함수보다 먼저 실행됨)
 @bp.before_app_request
@@ -96,4 +73,5 @@ def login_required(view):
             return redirect(url_for('auth.login', next=_next))
         return view(*args, **kwargs)
     return wrapped_view
+
 

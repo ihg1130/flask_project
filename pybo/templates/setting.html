@@ -1,0 +1,280 @@
+{% extends 'base1.html' %}
+{% block content %}
+      <main>
+        <div>
+          <div class="relative overflow-hidden bg-black pb-32">
+            <!-- Menu open: "bottom-0", Menu closed: "inset-y-0" -->
+            <header class="relative py-10">
+              <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold tracking-tight text-white">마이 페이지</h1>
+              </div>
+            </header>
+          </div>
+
+          <main class="relative -mt-32">
+            <div class="mx-auto max-w-screen-xl px-4 pb-6 sm:px-6 lg:px-8 lg:pb-16">
+              <div class="overflow-hidden rounded-lg bg-white shadow">
+                <div class="divide-y divide-gray-200 lg:grid lg:grid-cols-12 lg:divide-y-0 lg:divide-x">
+                  <aside class="py-6 lg:col-span-3">
+                    <nav class="space-y-1">
+                      <!-- Current: "bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700", Default: "border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900" -->
+                      <a href="{{ url_for('question.setting') }}"
+                        class="bg-teal-50 border-teal-500 text-teal-700 hover:bg-teal-50 hover:text-teal-700 group border-l-4 px-3 py-2 flex items-center text-sm font-medium"
+                        aria-current="page">
+                        <!--
+                        Heroicon name: outline/user-circle
+          
+                        Current: "text-teal-500 group-hover:text-teal-500", Default: "text-gray-400 group-hover:text-gray-500"
+                        -->
+                        <svg class="text-teal-500 group-hover:text-teal-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z">
+                          </path>
+                        </svg>
+                        <span class="truncate">내 정보</span>
+                      </a>
+
+                      <a href="{{ url_for('question.rooms') }}"
+                        class="border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group border-l-4 px-3 py-2 flex items-center text-sm font-medium">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor"
+                          class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z">
+                          </path>
+                        </svg>
+                        <span class="truncate">나의 추모공간</span>
+                      </a>
+
+                      <a href="{{ url_for('question.history') }}"
+                        class="border-transparent text-gray-900 hover:bg-gray-50 hover:text-gray-900 group border-l-4 px-3 py-2 flex items-center text-sm font-medium">
+                        <!-- Heroicon name: outline/bell -->
+                        <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                          stroke="currentColor" aria-hidden="true">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0">
+                          </path>
+                        </svg>
+                        <span class="truncate">나의 활동</span>
+                      </a>
+                    </nav>
+                  </aside>
+
+                  <div class="divide-y divide-gray-200 lg:col-span-9">
+                    <div class="py-6 px-4 sm:p-6 lg:pb-8">
+                      <form data-turbo-method="put" data-turbo="false" class="" id="edit_user_648648"
+                        enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post"><input
+                          type="hidden" name="_method" value="patch" autocomplete="off"><input type="hidden"
+                          name="authenticity_token"
+                          value="Waclpzovy3wjj58XSRNwFsgBZ3jnJz5bSgq9bIcRZDKZ32QbxTXiiLi2nzOgdLCQMYDFy1RaSFHQA8jgDAiq3g"
+                          autocomplete="off">
+                        <div class="mt-6 flex flex-col lg:flex-row">
+                          <div class="flex-grow space-y-6">
+                            <div>
+                              <div class="flex">
+                                <label for="username" class="block text-sm font-medium text-gray-700">이메일</label>
+                              </div>
+                              <div class="mt-1 flex rounded-md shadow-sm">
+                                <input
+                                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm"
+                                  type="email" name="user[email]" id="user_email" placeholder="ihg1130@naver.com">
+                              </div>
+                            </div>
+
+                            <div>
+                              <label for="username" class="block text-sm font-medium text-gray-700">이름</label>
+                              <div class="mt-1 flex rounded-md shadow-sm">
+                                <input
+                                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm"
+                                  type="text" name="user[username]" id="user_username" placeholder="임현규">
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="mt-6 flex-grow lg:mt-0 lg:ml-6 lg:flex-shrink-0 lg:flex-grow-0">
+                            <p class="text-sm font-medium text-gray-700" aria-hidden="true">프로필 사진</p>
+                            <div class="mt-1 lg:hidden" data-controller="image">
+                              <div class="flex items-center">
+                                <div class="inline-block h-12 w-12 flex-shrink-0 overflow-hidden rounded-full"
+                                  aria-hidden="true">
+                                  <img class="h-full w-full rounded-full" id="main-image-small"
+                                    src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png">
+
+                                </div>
+                                <div class="ml-5 rounded-md shadow-sm">
+                                  <div
+                                    class="group relative flex items-center justify-center rounded-md border border-gray-300 py-2 px-3 focus-within:ring-2 focus-within:ring-sky-500 focus-within:ring-offset-2 hover:bg-gray-50">
+                                    <label for="mobile-user-photo"
+                                      class="pointer-events-none relative text-sm font-medium leading-4 text-gray-700">
+                                      <span>변경</span>
+                                      <span class="sr-only"> user photo</span>
+                                    </label>
+                                    <input
+                                      class="absolute h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
+                                      data-action="image#replaceSmall" data-image-target="source" type="file"
+                                      name="user[avatar]" id="user_avatar">
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="relative hidden overflow-hidden rounded-full lg:block" data-controller="image">
+                              <img class="relative h-40 w-40 rounded-full object-cover" id="main-image"
+                                src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png">
+
+                              <label for="desktop-user-photo" class="absolute inset-0 flex h-full w-full items-center justify-center bg-black bg-opacity-75 text-sm font-medium text-white opacity-0
+                                        hover:opacity-100">
+                                <span>변경</span>
+                                <span class="sr-only"> user photo</span>
+                                <input
+                                  class="absolute inset-0 h-full w-full cursor-pointer rounded-md border-gray-300 opacity-0"
+                                  data-action="image#replace" data-image-target="source" type="file" name="user[avatar]"
+                                  id="user_avatar">
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mt-4 flex justify-end py-4 px-4 sm:px-6">
+                          <button name="button" type="submit" class="btn-primary bg-black text-white">저장</button>
+                        </div>
+
+                        <div data-controller="common">
+                          <div class="relative flex items-start mt-4">
+                            <div class="flex h-5 items-center">
+                              <input type="checkbox" name="death_date[not_pass]" id="change_password"
+                                data-common-target="source" data-action="common#change_password">
+                            </div>
+                            <div class="ml-3 text-sm">
+                              <label for="candidates" class="font-medium text-gray-700">비밀번호 변경하기</label>
+                            </div>
+                          </div>
+                          <div class="mt-6 grid grid-cols-12 gap-6">
+                            <div class="col-span-12 sm:col-span-6">
+                              <label for="first-name" class="block text-sm font-medium text-gray-700">현재 비밀번호</label>
+                              <input
+                                class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm disabled"
+                                disabled="disabled" autocomplete="new-password" type="password"
+                                name="user[current_password]" id="user_current_password">
+                            </div>
+                            <div class="col-span-12 sm:col-span-6">
+                              <label for="first-name" class="block text-sm font-medium text-gray-700">새 비밀번호 - 영문 6자
+                                이상</label>
+                              <input
+                                class="disabled mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm disabled"
+                                disabled="disabled" autocomplete="new-password" type="password" name="user[password]"
+                                id="user_password">
+                            </div>
+
+                            <div class="col-span-12 sm:col-span-6">
+                              <label for="first-name" class="block text-sm font-medium text-gray-700">비밀번호 재입력</label>
+                              <input
+                                class="disabled mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm disabled"
+                                disabled="disabled" autocomplete="new-password" type="password"
+                                name="user[password_confirmation]" id="user_password_confirmation">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="mt-4 flex justify-end py-4 px-4 sm:px-6">
+                          <button name="button" type="submit" class="btn-primary bg-black text-white">변경하기</button>
+                        </div>
+                      </form>
+                      <div class="mt-4 flex justify-end py-4 px-4 sm:px-6">
+                        <a data-turbo-method="delete"
+                          data-turbo-confirm="계정을 삭제하시면 관리하고 계신 모든 추모공간이 삭제됩니다. 정말 삭제하시겠습니까?" class="btn-alert t-right"
+                          href="/users">사용자 계정 삭제</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </main>
+    </main>
+</body>
+<script src="{{ url_for('static', filename='assets/js/jquery-3.6.1.min.js')}}"></script>
+<script>
+  $(function () {
+    $(document).mousedown(function (e) {
+      if ($("#togglemenu").is(":visible")) {
+        $("#togglemenu").each(function () {
+          var l_position = $(this).offset();
+          l_position.right = parseInt(l_position.left) + ($(this).width());
+          l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+          if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+            && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+          } else {
+            $("#togglemenu").hide();
+          }
+        });
+      }
+    });
+
+    $("#user-menu-button").click(function () {
+      $("#togglemenu").show();
+    });
+  });
+
+  $(function () {
+    $(document).mousedown(function (e) {
+      if ($("#mobiletoggle").is(":visible")) {
+        $("#mobiletoggle").each(function () {
+          var l_position = $(this).offset();
+          l_position.right = parseInt(l_position.left) + ($(this).width());
+          l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+          if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+            && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+          } else {
+            $("#mobiletoggle").hide();
+          }
+        });
+      }
+    });
+
+    $("#mobilemenu").click(function () {
+      $("#mobiletoggle").show();
+    });
+  });
+
+  $(function () {
+    $('#change_password').click(function () {
+      var imChecked = $(this).prop("checked");
+
+      console.log(imChecked);
+
+      if (imChecked == true) {
+        $('#user_current_password').attr('disabled', false);
+        $('#user_password').attr('disabled', false);
+        $('#user_password_confirmation').attr('disabled', false);
+
+        $('#user_current_password').css('background', 'white');
+        $('#user_password').css('background', 'white');
+        $('#user_password_confirmation').css('background', 'white');
+      }
+      else {
+        $('#user_current_password').attr('disabled', true);
+        $('#user_password').attr('disabled', true);
+        $('#user_password_confirmation').attr('disabled', true);
+      }
+
+      //if(imChecked){
+      //  $('#user_password').prop('disabled',imChecked);
+      //} else {
+      //  $('#user_password').prop('disabled',imChecked);
+      //}
+    });
+  });
+
+
+</script>
+{% endblock %}
+</html>

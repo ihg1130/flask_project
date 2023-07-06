@@ -1,8 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% block content %}
 <!-- 질문 등록 -->
 <div class="container">
-    <h5 class="my-3 border-bottom pb-2">질문등록</h5>
+    <h5 class="my-3 border-bottom pb-2 h2 mt-5">질문등록</h5>
     <form method="post" enctype="multipart/form-data" class="post-form my-3">
         {{ form.csrf_token }}
         <!-- 오류표시 Start -->
@@ -19,27 +19,131 @@
         </div>
         {% endif %}
         <!-- 오류표시 End -->
-        <div class="form-group">
-
-    <div class="my-3">
-        <div class="mb-3">
-            <label for="subject">제목</label>
-            <input type="text" class="form-control" name="subject" id="subject"
-            value="{{ form.subject.data or '' }}">
-        </div>
-        <div class="mb-3">
-            <label for="content">내용</label>
-            <textarea class="form-control" name="content"
-             id="content" rows="10">{{ form.content.data or '' }}</textarea>
-        </div>
-        <div class="mb-3">
-            <label for="file">파일</label>
-            <input type="file" name="file"/>
-        </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
         
-    </form>
+        <div class="my-3">
+            <div class="mb-3">
+                <label for="subject" class="h4 mt-3">제목</label>
+                <input type="text" class="form-control" name="subject" id="subject"
+                    value="{{ form.subject.data or '' }}">
+            </div>
+            <div class="mb-3">
+                <label for="content"  class="h4 mt-3">내용</label>
+                <textarea class="form-control" name="content" id="content" rows="10"
+                    value="{{ form.content.data or '' }}">{{ form.content.data or '' }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="me-2 mb-4 h5">이름</label>
+                <input type="text" name="name" id="subject" style="width:400px" class="me-5 mb-4"
+                    value="{{ form.name.data or '' }}">
 
-       
+                <label for="relationship" class="me-2 mb-4 h5">관계</label>
+                <select id="relation" name="relation" style="width:400px" class="me-4 mb-4">
+                    <option value="관계">{{ g.user.username }}님과 관계</option>
+                    <option value="가족">가족</option>
+                    <option value="친구/지인">친구/지인</option>
+                    <option value="직장인연">직장인연</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-primary mb-4 bg-black text-white">저장하기</button>
+        </div>
+    </form>
 </div>
+
+
+<script src="{{ url_for('static', filename='assets/js/jquery-3.6.1.min.js')}}"></script>
+<script>
+    $(function () {
+        $(document).ready(function () {
+            $('#uploadButton').on('click', function () {
+                $('#uploadInput').click();
+            });
+        });
+    });
+
+    $(function () {
+        $(document).mousedown(function (e) {
+            if ($("#togglemenu").is(":visible")) {
+                $("#togglemenu").each(function () {
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                        && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                    } else {
+                        $("#togglemenu").hide();
+                    }
+                });
+            }
+        });
+
+        $("#user-menu-button").click(function () {
+            $("#togglemenu").show();
+        });
+    });
+
+    $(function () {
+        $(document).mousedown(function (e) {
+            if ($("#mobiletoggle").is(":visible")) {
+                $("#mobiletoggle").each(function () {
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                        && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                    } else {
+                        $("#mobiletoggle").hide();
+                    }
+                });
+            }
+        });
+
+        $("#mobilemenu").click(function () {
+            $("#mobiletoggle").show();
+        });
+    });
+
+    const $nav = document.querySelector('#tab-button-nav')
+    const $sections = document.querySelectorAll('.tab-section');
+
+    $nav.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('tab-button')) {
+            return;
+        }
+
+        const focusedTabId = e.target.dataset.tabSection;
+
+        $sections.forEach(($section) => {
+            if ($section.id === focusedTabId) {
+                $section.removeAttribute('hidden');
+            } else {
+                $section.setAttribute('hidden', true);
+            }
+        });
+    });
+
+    $(function () {
+        $(document).ready(function () {
+            $('#uploadButton').on('click', function () {
+                $('#uploadInput').click();
+            });
+        });
+    });
+
+    $(function () {
+        $("#selectbox").change(function () {
+            if ($("#selectbox").val() == "direct") {
+                $("#select-direct").show();
+            }
+            else {
+                $("#select-direct").hide();
+            }
+        });
+    });
+</script>
+
+</body>
 {% endblock %}
+
+</html>

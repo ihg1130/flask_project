@@ -1,0 +1,451 @@
+{% extends 'base1.html' %}
+{% block content %}
+                <div class="flex min-w-0 flex-1 flex-col overflow-hidden">
+                    <div class="relative z-0 flex flex-1 overflow-hidden">
+                        <main class="bg-white relative z-0 flex-1 overflow-y-auto focus:outline-none xl:order-last">
+                            <article class="bg-white">
+                                <div>
+                                    <div>
+                                        <div>
+                                            <!-- <img class="h-56 w-full object-cover lg:h-56" id="singleHeaderImageBtn" src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24510f830f4cf03cbc4f755c30e26d2ec08a5855/Screen%20Shot%202022-09-19%20at%201.39.57%20PM.png"> -->
+                                            <div class="h-56 w-full bg-black"></div>
+                                            <div id="singleHeaderImageModal" class="modal">
+                                                <div class=" modal-content" style="transform: translateY(0px);">
+                                                    <div class="relative bg-white rounded-lg">
+                                                        <div id="singleHeaderImageModalClose" class="close no-select">
+                                                            <div
+                                                                class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                                                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                        clip-rule="evenodd"></path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                        <img id="single-image" class="w-full h-full" src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamtJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24510f830f4cf03cbc4f755c30e26d2ec08a5855/Screen%20Shot%202022-09-19%20at%201.39.57%20PM.png">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="position: relative" class="d-none d-sm-block">
+                                        </div>
+
+                                    </div>
+                                    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                                        <div class="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
+                                            <div class="flex">
+                                                <span class="relative inline-block">
+                                                    <div id="singleMainImageModal" class="modal">
+                                                        <div class=" modal-content" style="transform: translateY(0px);">
+                                                            <div class="relative bg-white rounded-lg">
+                                                                <div id="singleMainImageModalClose"
+                                                                    class="close no-select">
+                                                                    <div
+                                                                        class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                            <path fill-rule="evenodd"
+                                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                                clip-rule="evenodd"></path>
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                                <img id="single-image" class="w-full h-full" src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWnc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4898c466e919166b5ccad775463620beb9b3eae1/Screen%20Shot%202021-05-10%20at%2022.09.46.jpg">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <img id="singleMainImageBtn" class="object-cover cursor-pointer h-36 w-36 rounded-full ring-4 ring-white sm:h-36 sm:w-36" src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWnc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4898c466e919166b5ccad775463620beb9b3eae1/Screen%20Shot%202021-05-10%20at%2022.09.46.jpg"> -->
+                                                    <div class="h-36 w-36 rounded-full ring-4 ring-white sm:h-36 sm:w-36 bg-gray-100"></div>
+                                                </span>
+                                            </div>
+                                            <div class="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
+                                                <div class="mt-12 min-w-0 flex-1 sm:hidden 2xl:block">
+                                                    {% for chumo in chumos %}
+                                                    <h1 class="truncate text-2xl font-bold text-gray-900">{{ chumo.name }}</h1>
+                        <p class="text-sm font-medium text-gray-500 mt-3">{{ chumo.birth }}~{{ chumo.death }}</p>
+                        {% endfor %}
+                                                </div>
+                                                <div class="justify-stretch mt-6 flex space-x-2 sm:space-x-4">
+                                                    
+                                                    </div>
+                                                    <div class="flex h-full">
+                                                        <div id="shareModal" class="modal">
+                                                            <div id="share-modal" class=" modal-content"
+                                                                style="transform: translateY(0px);">
+                                                                <div class="relative bg-white rounded-lg">
+                                                                    <div id="shareModalClose" class="close no-select">
+                                                                        <div
+                                                                            class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                                                                            <svg aria-hidden="true" class="w-5 h-5"
+                                                                                fill="currentColor" viewBox="0 0 20 20"
+                                                                                xmlns="http://www.w3.org/2000/svg">
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                                    clip-rule="evenodd"></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="py-6 px-6 lg:px-8">
+                                                                       
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                       
+                                                    </div>
+
+                                                    <!--                    FIX memorial_admin? not working-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-6 hidden min-w-0 flex-1 sm:block 2xl:hidden">
+                                            <h1 class="truncate text-2xl font-bold text-gray-900">김OO</h1>
+                                            <p class="text-sm font-medium text-gray-500 mt-3">OOOO년 OO월 OO일 ~ OOOO년 OO월 OO일 </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tabs -->
+                                <div class="mt-6 sm:mt-2 2xl:mt-5">
+                                    <div class="border-b border-gray-200">
+                                        <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                                            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                                                <!-- Current: "border-pink-500 text-gray-900", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" -->
+                                                <a href="{{ url_for('question.create') }}" class="border-black text-gray-900 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                                                data-tab-section="tab-section-1">홈</a>
+                                                <a href="{{ url_for('question._list') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                                                data-turbo="false" data-tab-section="tab-section-2">추모글</a>
+                                              <a href="{{ url_for('question.gallery') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                                                data-turbo="false" data-tab-section="tab-section-2">사진첩</a>
+                                              <a href="{{ url_for('question.timeline') }}" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm tab-button"
+                                                data-turbo="false" data-tab-section="tab-section-3">타임라인</a>
+
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Description list -->
+                                <div class="mx-auto mt-6 mb-6 max-w-5xl px-4 sm:px-6 lg:px-8"
+                                    data-controller="lightbox">
+                                    <div class="hidden fixed z-30 inset-0 overflow-y-auto" data-lightbox-target="modal"
+                                        data-lg-id="906ddc68-0649-483b-af5d-01e51c4d91d7">
+                                        <div
+                                            class="flex items-center justify-center h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                                            <div class="opacity-0 fixed inset-0 transition-opacity"
+                                                data-lightbox-target="background">
+                                                <div class="absolute inset-0 bg-gray-700 bg-opacity-75">
+                                                    <div class="sm:block absolute top-0 left-0 pt-4 pl-4">
+                                                        <span
+                                                            class="text-white font-medium"><!-- will hold the slide name --></span>
+                                                    </div>
+
+                                                    <div class="sm:block absolute top-0 right-0 pt-4 pr-4">
+                                                        <a class="text-gray-100"
+                                                            data-action="click->lightbox#handleClose" href="#">
+                                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
+                                                aria-hidden="true">​</span>
+
+                                            <div class="relative inline-block rounded-lg text-left overflow-hidden transition-all my-8 align-middle w-3/4 inset-0">
+                                                <turbo-frame data-lightbox-target="frame" id="attachment_gallery" src=""></turbo-frame>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mx-auto max-w-3xl lg:grid lg:max-w-5xl lg:grid-cols-3"
+                                        data-lg-id="8a858e79-c987-4485-869d-e84ce3c2f790">
+                                        <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+                                            <div>
+                                                <div>
+                                                    <div class="mb-6 py-3 xl:pb-0 xl:py-0 xl:mt-0 sm:mt-0 sm:pt-0">
+                                                        <div class="all_wrap">
+                                                            <div class="pt-3 a">
+                                                              {% for question in questions %}
+                                                              {% if question.file_data %}
+                                                              <div class="pt-3 a">
+                                                           <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"              
+                                                           src="data:image/jpeg;base64,{{ question.file_data }}" alt="File Data">
+                                                        </div>
+                                                        <div class="pt-3 a">
+                                                            <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"              
+                                                            src="data:image/jpeg;base64,{{ question.file_data }}" alt="File Data">
+                                                         </div>
+                                                         <div class="pt-3 a">
+                                                            <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"              
+                                                            src="data:image/jpeg;base64,{{ question.file_data }}" alt="File Data">
+                                                         </div>
+                                                               {% endif %}
+                                                               {% endfor %}
+                                                                
+                                                            </div>
+                                                            
+                                                            <!-- <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBakVJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28b95b38df9f4befe871e4f2485926dfac876102/Screen%20Shot%202022-12-07%20at%207.36.53%20PM.png">
+                                                            </div>
+
+                                                            <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b589b0b05a6d1216514e54e1da00b76f4ce86514/Screen%20Shot%202021-05-10%20at%2022.09.25.jpg">
+                                                            </div>
+
+                                                            <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e848efe78b8c4b79e87f9335ba9d7872ccfc2725/Screen%20Shot%202021-05-10%20at%2022.09.46.jpg">
+                                                            </div>
+
+                                                            <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYW89IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d6b1792d1b759aac3572d3bf7ed0fd3ec60f6de7/Screen%20Shot%202021-05-10%20at%2022.23.25.jpg">
+                                                            </div>
+
+                                                            <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--08d3578c1793b676013e8e313f944c8772087cc2/Screen%20Shot%202021-05-10%20at%2022.31.53.jpg">
+                                                            </div>
+                                                            
+                                                            <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaXdJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--28c7b874471663cf97e098d313586c3929c8b09d/225D8B4258B8336E07.png">
+                                                            </div>
+
+                                                            <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="https://www.rememberyou.kr/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBaTBJIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc07a78b51081141870f050348c83b70b195d5f2/style_61078d2817756.png">
+                                                            </div> -->
+
+                                                            <!-- <div class="pt-3 a">
+                                                                <img class="pointer-events-none object-cover group-hover:opacity-75 cursor-pointer"
+                                                                    src="{{ url_for('static', filename='assets/img/hero_bg.jpg')}}">
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                    <aside class="lg:mt-8 lg:hidden border-t border-gray-200">
+                                                        <h2 class="sr-only">Details</h2>
+                                                        <div class="space-y-5 pt-6">
+                                                            <div class="flex items-center space-x-2">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 h-5 w-5 text-red-500">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>
+                                                                </svg>
+                                                                <span class="text-sm font-medium text-red-700">비공개</span>
+                                                            </div>
+                                                            <div class="flex items-center space-x-2">
+                                                                <!-- Heroicon name: mini/chat-bubble-left-ellipsis -->
+                                                                <svg class="h-5 w-5 text-gray-400"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 20 20" fill="currentColor"
+                                                                    aria-hidden="true">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M10 2c-2.236 0-4.43.18-6.57.524C1.993 2.755 1 4.014 1 5.426v5.148c0 1.413.993 2.67 2.43 2.902.848.137 1.705.248 2.57.331v3.443a.75.75 0 001.28.53l3.58-3.579a.78.78 0 01.527-.224 41.202 41.202 0 005.183-.5c1.437-.232 2.43-1.49 2.43-2.903V5.426c0-1.413-.993-2.67-2.43-2.902A41.289 41.289 0 0010 2zm0 7a1 1 0 100-2 1 1 0 000 2zM8 8a1 1 0 11-2 0 1 1 0 012 0zm5 1a1 1 0 100-2 1 1 0 000 2z"
+                                                                        clip-rule="evenodd"></path>
+                                                                </svg>
+                                                                <span class="text-sm font-medium text-gray-900">0개의 추모글</span>
+                                                            </div>
+                                                            <div class="flex items-center space-x-2">
+                                                                <!-- Heroicon name: mini/calendar -->
+                                                                <svg class="h-5 w-5 text-gray-400"
+                                                                    xmlns="http://www.w3.org/2000/svg"
+                                                                    viewBox="0 0 20 20" fill="currentColor"
+                                                                    aria-hidden="true">
+                                                                    <path fill-rule="evenodd"
+                                                                        d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                                                                        clip-rule="evenodd"></path>
+                                                                </svg>
+                                                                <span class="text-sm font-medium text-gray-900">OOOO년 OO월 OO일</span>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+                                                            <div>
+                                                                <h2 class="text-sm font-medium text-gray-500">추모공간 관리자
+                                                                </h2>
+                                                                <ul role="list" class="mt-3 space-y-3">
+                                                                    <li class="flex justify-start">
+                                                                        <a href="#" class="flex items-center space-x-3">
+                                                                            <div class="flex-shrink-0">
+                                                                                <!-- <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                                                                                    src="https://www.rememberyou.kr/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBamNFIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3eb0f270dae1db28c94f4de9e633d5df56cd321f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBPZ2xxY0dWbk9oUnlaWE5wZW1WZmRHOWZiR2x0YVhSYkIya0NMQUZwQWl3QiIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--94f52beae57ffc1019ac2d428ac7a00421ce3e2c/Screen%20Shot%202022-09-19%20at%201.32.40%20PM.png"> -->
+                                                                                    <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100"></div>
+                                                                            </div>
+                                                                            <div class="text-sm font-medium text-gray-900">김△△</div>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="space-y-8 border-t border-gray-200 py-6">
+                                                            <a href="mailto:rememberyou.kr@gmail.com"
+                                                                class="btn-secondary">
+                                                                문의 및 피드백
+                                                            </a>
+                                                        </div>
+                                                    </aside>
+                                                </div>
+                                            </div>
+                                            <section aria-labelledby="activity-title" class="mt-8 xl:mt-10">
+
+                                            </section>
+                                        </div>
+                                        <aside class="hidden lg:block lg:pl-8 mb-5">
+                                            <h2 class="sr-only">Details</h2>
+                                            <div class="space-y-5">
+                                              <div class="flex items-center space-x-2">
+                                                <!-- Heroicon name: mini/lock-open -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6 h-5 w-5 text-red-500">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                    </path>
+                  </svg>
+                                                <span class="text-sm font-medium text-red-700">비공개</span>
+                                              </div>
+                                              <div class="flex items-center space-x-2">
+                                                <span class="text-sm font-medium text-gray-900">313개의 추모글</span>
+                                              </div>
+                                              <div class="flex items-center space-x-2">
+                                                <!-- Heroicon name: mini/calendar -->
+                                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                  fill="currentColor" aria-hidden="true">
+                                                  <path fill-rule="evenodd"
+                                                    d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                                                    clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="text-sm font-medium text-gray-900"><time datetime="2020-12-02">2023년 6월 7일에 개설</time></span>
+                                              </div>
+                                            </div>
+                                            <div class="mt-6 space-y-8 border-t border-gray-200 py-6">
+                                              <div>
+                                                <h2 class="text-sm font-medium text-gray-500">추모공간 관리자</h2>
+                                                <ul role="list" class="mt-3 space-y-3">
+                                                  <li class="flex justify-start">
+                                                    <a href="#" class="flex items-center space-x-3">
+                                                      <div class="flex-shrink-0">
+                                                        
+                                                       
+                                                        <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                                                        src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png" />
+                                                       
+                                                        
+                                                       
+                                                      </div>
+                                                      <div class="text-sm font-medium text-gray-900">{{ g.user.username }}님</div>
+                                                    </a>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                            </div>
+                                            <div class="space-y-8 border-t border-black py-6">
+                                              <a href="" class="btn-secondary">
+                                                문의 및 피드백
+                                              </a>
+                                            </div>
+                                          </aside>
+                                        </div>
+                                      </div>
+                            </article>
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.0.0/masonry.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.0/imagesloaded.pkgd.min.js"></script>
+    <script>
+        var $grid = $('.all_wrap').masonry({
+            itemSelector: '.a',
+            columnWidth: 190, // 각 열의 기본 너비 
+            //rowHeight: 200,
+            gutter: 10, // 요소들 사이의 간격
+            fitWidth: false // 컨테이너 너비에 맞게 자동 조정
+          });
+          
+          // 요소가 로드되거나 추가될 때마다 Masonry 레이아웃 업데이트
+          $grid.imagesLoaded().progress(function() {
+            $grid.masonry('layout');
+          });
+    </script>
+    <script>
+        $(function () {
+            $(document).mousedown(function (e) {
+                if ($("#togglemenu").is(":visible")) {
+                    $("#togglemenu").each(function () {
+                        var l_position = $(this).offset();
+                        l_position.right = parseInt(l_position.left) + ($(this).width());
+                        l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+    
+                        if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                            && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                        } else {
+                            $("#togglemenu").hide();
+                        }
+                    });
+                }
+            });
+    
+            $("#user-menu-button").click(function () {
+                $("#togglemenu").show();
+            });
+        });
+    
+        $(function () {
+            $(document).mousedown(function (e) {
+                if ($("#mobiletoggle").is(":visible")) {
+                    $("#mobiletoggle").each(function () {
+                        var l_position = $(this).offset();
+                        l_position.right = parseInt(l_position.left) + ($(this).width());
+                        l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+    
+                        if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                            && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                        } else {
+                            $("#mobiletoggle").hide();
+                        }
+                    });
+                }
+            });
+    
+            $("#mobilemenu").click(function () {
+                $("#mobiletoggle").show();
+            });
+        });
+    
+        $(function () {
+            $(document).ready(function () {
+                $('#uploadButton').on('click', function () {
+                    $('#uploadInput').click();
+                });
+    
+                /*$('#uploadInput').on('change', function() {
+                  var file = $(this).prop('files')[0];
+                  // 업로드한 파일 처리 로직 추가
+                  //console.log('업로드한 파일:', file);
+                });*/
+            });
+        });
+    
+    
+    
+        /* $(document).ready(function() {
+           $("#comment_question").on("change", function() {
+               var selectedOption = $(this).val();
+               $("#body").val(selectedOption);
+           });
+       });*/
+    </script>
+    {% endblock %}
+    </html>

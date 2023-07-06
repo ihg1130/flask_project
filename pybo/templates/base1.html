@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <title>하늘 거울 - 추모공간</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i"
+      rel="stylesheet">
+      <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/tailwind.css')}}" data-turbo-track="reload" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/application.css')}}" data-turbo-track="reload" />
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/style.css')}}" rel="stylesheet">
+    <style>
+      .tab-button {
+        cursor: pointer;
+      }
+      .all_wrap .a {
+            width: 190px;
+        }
+      .btn-primary:hover {
+            background-color: #FCD477 !important; 
+            color: black !important; 
+        }
+    </style>
+</head>
+<body>
+<!-- 네비게이션바 -->
+{% include "nav1.html" %}
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- Bootstrap JS -->
+<!-- 자바스크립트 Start -->
+
+{% endblock %}
+<!-- 자바스크립트 End -->

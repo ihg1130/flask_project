@@ -1,14 +1,15 @@
 from datetime import datetime
 from flask import Flask, Blueprint, current_app, render_template, request, url_for, g, flash, send_file
-from pybo.forms import QuestionForm, AnswerForm
+from pybo.forms import QuestionForm, AnswerForm, ChumoForm
 from werkzeug.utils import redirect, secure_filename
-from pybo.models import Question
+from pybo.models import Question, Chumo, User
 from datetime import datetime
 from .. import db
 from pybo.views.auth_views import login_required
 from io import BytesIO
 
 import os
+import base64
 
 bp = Blueprint('question', __name__, url_prefix='/question')
 
@@ -16,10 +17,11 @@ app=Flask(__name__)
 
 @bp.route('/list/')
 def _list():
+    chumos = Chumo.query.all()
     page = request.args.get('page', type=int, default=1)  # 페이지
     question_list = Question.query.order_by(Question.create_date.desc())
     question_list = question_list.paginate(page=page, per_page=10)
-    return render_template('question/question_list.html', question_list=question_list)
+    return render_template('memorial1.html', question_list=question_list, chumos=chumos)
 
 
 @bp.route('/detail/<int:question_id>/')
@@ -32,19 +34,23 @@ def detail(question_id):
 @login_required
 def create():
     form = QuestionForm()
+    # user = User.query.all()
+    if request.method == 'GET':
+        chumos = Chumo.query.all()
+        for chumo in chumos:
+         if chumo.profile_data is not None:
+           chumo.profile_data = base64.b64encode(chumo.profile_data).decode('utf-8')
     if request.method == 'POST' and form.validate_on_submit():
-        f = request.files['file']
-        data = BytesIO(f.read())
-        question = Question(subject=form.subject.data, content=form.content.data,
-                             create_date=datetime.now(),file_name=f.filename, file_data=data.getvalue(), user=g.user)
+        file = request.files['file_data']
+        file_data = file.read()
+        question = Question(file_data=file_data, subject=form.subject.data, content=form.content.data,
+                             name=form.name.data, relation=form.relation.data,
+                             create_date=datetime.now(), user=g.user)
         db.session.add(question)
         db.session.commit()
-        f = request.files['file']
-        filepath = os.path.join(current_app.root_path, 'static', 'image', question.file_name )
-        f.save(filepath)
-        # f.save('./images/' + secure_filename(f.filename)) # 파일명을 보호하기위한 함수, 지정된 경로에 파일 저장
-        return redirect(url_for('main.index'))
-    return render_template('question/question_form.html', form=form)
+        return redirect(url_for('question._list'))
+    return render_template('memorial.html', form=form, chumos=chumos)
+
 
 @bp.route('/modify/<int:question_id>', methods=('GET', 'POST'))
 @login_required
@@ -86,3 +92,65 @@ def vote(question_id):
     _question.voter.append(g.user)
     db.session.commit()
     return redirect(url_for('question.detail', question_id=question_id))
+
+@bp.route('/new', methods=('GET', 'POST'))
+@login_required
+def new():
+    form = ChumoForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        file = request.files['profile_data']
+        profile_data = file.read()
+        chumo = Chumo(profile_data=profile_data, name=form.name.data, birth=form.birth.data,
+                             death=form.death.data,
+                            content=form.content.data,
+                             create_date=datetime.now(), user=g.user)
+        db.session.add(chumo)
+        db.session.commit()
+        
+        return redirect(url_for('question.create'))
+    return render_template('new.html', form=form)
+
+@bp.route('/send')
+@login_required
+def send():
+      return render_template("send.html")
+
+@bp.route('/massage')
+@login_required
+def massage():
+      return render_template("main_massage.html")
+
+@bp.route('/setting')
+@login_required
+def setting():
+      return render_template("setting.html")
+
+@bp.route('/rooms')
+@login_required
+def rooms():
+      return render_template("rooms.html")
+
+@bp.route('/history')
+@login_required
+def history():
+      return render_template("history.html")
+
+@bp.route('/gallery')
+@login_required
+def gallery():
+    chumos = Chumo.query.all()
+    questions = Question.query.all()
+    for question in questions:
+        if question.file_data is not None:
+           question.file_data = base64.b64encode(question.file_data).decode('utf-8')
+    return render_template('gallery.html', questions=questions, chumos=chumos)
+      
+
+@bp.route('/timeline')
+@login_required
+def timeline():
+      chumos = Chumo.query.all()
+      return render_template("timeline.html", chumos=chumos)
+
+
+

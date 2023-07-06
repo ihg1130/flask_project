@@ -1,0 +1,946 @@
+{% extends 'base1.html' %}
+{% block content %}
+                <main>
+                    <div class="bg-gray-100">
+                        <main class="mx-auto max-w-2xl py-8 px-4 sm:py-8 sm:px-6 lg:px-8">
+                            <div class="space-y-6">
+                                <div class="mt-2 md:flex md:items-center md:justify-between">
+                                    <div class="min-w-0 flex-1">
+                                        <h2
+                                            class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">
+                                            부고장 만들기</h2>
+                                    </div>
+                                    <div class="mt-4 flex flex-shrink-0 md:mt-0 md:ml-4"></div>
+                                </div>
+
+                                <section>
+                                    <form data-turbo-method="POST" class="new_obituary" id="new_obituary"
+                                        action="/obituaries" accept-charset="UTF-8" method="post"><input type="hidden"
+                                            name="authenticity_token"
+                                            value="_qawCqc0wFR9n93p2AEpRqbOgcRHcN2tpS5G75PxIfpMYE1TCvvR2dD1cSNJiavo3v9pwl6HyNPalgLCZDlpkQ"
+                                            autocomplete="off">
+                                        <div class="sm:overflow-hidden sm:rounded-md space-y-4">
+                                            <div class="bg-white py-6 px-4 sm:p-6">
+                                                <div class="">
+                                                    <div class="lg:col-span-4 space-y-6 sm:col-span-4">
+                                                        <h2 class="text-lg font-medium leading-6 text-gray-900">부고장 기본정보
+                                                        </h2>
+                                                        <div class="mt-6 grid grid-cols-12 gap-6">
+                                                            <div class="col-span-12">
+
+                                                                <div class="flex justify-between">
+                                                                    <label for="first-name"
+                                                                        class="block text-sm font-medium text-gray-700">고인의
+                                                                        성함</label>
+                                                                    <span class="text-sm text-gray-500"
+                                                                        id="email-optional">필수항목</span>
+                                                                </div>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    required="required" type="text"
+                                                                    name="obituary[name]" id="obituary_name">
+                                                            </div>
+                                                            <div class="col-span-12">
+                                                                <div class="flex justify-between">
+                                                                    <label for="first-name"
+                                                                        class="block text-sm font-medium text-gray-700">생년월일</label>
+                                                                    <span class="text-sm text-gray-500"
+                                                                        id="email-optional">필수항목</span>
+                                                                </div>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    required="required" type="date"
+                                                                    name="obituary[birth_date]"
+                                                                    id="obituary_birth_date">
+                                                            </div>
+
+                                                            <div class="col-span-12">
+                                                                <div class="flex justify-between">
+                                                                    <label for="first-name"
+                                                                        class="block text-sm font-medium text-gray-700">임종일</label>
+                                                                    <span class="text-sm text-gray-500"
+                                                                        id="email-optional">필수항목</span>
+                                                                </div>
+                                                                <input
+                                                                    class="death_date mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm"
+                                                                    id="death_date" required="required" type="date"
+                                                                    name="obituary[death_date]">
+                                                            </div>
+
+                                                            <div class="col-span-12">
+                                                                <label for="company"
+                                                                    class="block text-sm font-medium text-gray-700">상주</label>
+                                                                <input
+                                                                    class="funeral_organizers mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm"
+                                                                    id="funeral_organizers" placeholder="ex. 아들 김OO"
+                                                                    type="text" name="obituary[funeral_organizers]">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white py-6 px-4 sm:p-6">
+                                                <div>
+                                                    <div class="lg:col-span-4 space-y-6 sm:col-span-4">
+                                                        <h2 class="text-lg font-medium leading-6 text-gray-900">장례식장 정보
+                                                        </h2>
+                                                        <div class="mt-6 grid grid-cols-12 gap-6">
+                                                            <div class="col-span-12">
+                                                                <div class="flex justify-between">
+                                                                    <label for="first-name"
+                                                                        class="block text-sm font-medium text-gray-700">장례식장
+                                                                        명</label>
+                                                                    <span class="text-sm text-gray-500"
+                                                                        id="email-optional">필수항목</span>
+                                                                </div>
+
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    required="required" readonly="readonly"
+                                                                    id="addressSearchModalBtn" type="text"
+                                                                    name="obituary[funeral_name]">
+
+                                                                <div id="addressSearchModalModal" class="modal">
+                                                                    <div id="addressSearchModal-modal"
+                                                                        class=" modal-content"
+                                                                        style="transform: translateY(0px);">
+                                                                        <div
+                                                                            class="inline-block bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all my-8 align-middle max-w-lg w-full">
+                                                                            <div class="relative bg-white rounded-lg">
+                                                                                <div id="addressSearchModalModalClose"
+                                                                                    class="close no-select">
+                                                                                    <div
+                                                                                        class="absolute top-3 right-2.5 text-gray-400 bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center cursor-pointer">
+                                                                                        <svg aria-hidden="true"
+                                                                                            class="w-5 h-5"
+                                                                                            fill="currentColor"
+                                                                                            viewBox="0 0 20 20"
+                                                                                            xmlns="http://www.w3.org/2000/svg">
+                                                                                            <path fill-rule="evenodd"
+                                                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                                                                clip-rule="evenodd">
+                                                                                            </path>
+                                                                                        </svg>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="p-4">
+                                                                                    <h3
+                                                                                        class="mb-4 text-xl font-medium text-gray-900">
+                                                                                        장례식장 검색하기</h3>
+                                                                                    <div data-controller="clipboard">
+                                                                                        <div id="copied" class="mb-3">
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="mt-1 flex rounded-md shadow-sm">
+                                                                                            <div
+                                                                                                class="relative flex flex-grow items-stretch focus-within:z-10">
+                                                                                                <input id="keyword"
+                                                                                                    data-clipboard-target="source"
+                                                                                                    type="text"
+                                                                                                    class="block w-full rounded-none rounded-l-md border-gray-300 focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm"
+                                                                                                    placeholder="OO 장례식장">
+                                                                                            </div>
+                                                                                            <button
+                                                                                                onclick="searchPlaces(); return false;"
+                                                                                                style="min-width: 62px"
+                                                                                                type="button"
+                                                                                                class="relative -ml-px inline-flex items-center space-x-2 rounded-r-md border border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-rememberyou-600 focus:outline-none focus:ring-1 focus:ring-rememberyou-600">
+                                                                                                <span>검색</span>
+                                                                                            </button>
+                                                                                        </div>
+
+                                                                                        <div class="map_wrap hidden">
+                                                                                            <div id="menu_wrap"
+                                                                                                class="bg_white">
+
+                                                                                                <ul id="placesList">
+                                                                                                </ul>
+                                                                                                <div id="pagination">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <script>
+                                                                            var mapContainer;
+                                                                            var map;
+
+
+                                                                            // 마커를 담을 배열입니다
+                                                                            var markers = [];
+
+                                                                            // 장소 검색 객체를 생성합니다
+                                                                            var ps = new kakao.maps.services.Places();
+
+                                                                            // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+                                                                            var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+                                                                            // 키워드 검색을 요청하는 함수입니다
+                                                                            function searchPlaces() {
+                                                                                var keyword = document.getElementById('keyword').value;
+
+                                                                                if (!keyword.replace(/^\s+|\s+$/g, '')) {
+                                                                                    alert('장례식장 명을 입력해주세요!');
+                                                                                    return false;
+                                                                                }
+
+                                                                                // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+                                                                                ps.keywordSearch(keyword, placesSearchCB);
+                                                                            }
+
+                                                                            // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+                                                                            function placesSearchCB(data, status, pagination) {
+                                                                                if (status === kakao.maps.services.Status.OK) {
+
+                                                                                    // 정상적으로 검색이 완료됐으면
+                                                                                    // 검색 목록과 마커를 표출합니다
+                                                                                    displayPlaces(data);
+
+                                                                                    // 페이지 번호를 표출합니다
+                                                                                    displayPagination(pagination);
+
+                                                                                } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+                                                                                    displayPlaces(data);
+                                                                                    return;
+
+                                                                                } else if (status === kakao.maps.services.Status.ERROR) {
+
+                                                                                    alert('검색 결과 중 오류가 발생했습니다.');
+                                                                                    return;
+
+                                                                                }
+                                                                            }
+
+                                                                            // 검색 결과 목록과 마커를 표출하는 함수입니다
+                                                                            function displayPlaces(places) {
+                                                                                $('.map_wrap').removeClass('hidden')
+                                                                                if (places.length === 0) {
+                                                                                    $('#placesList').append("<li><p>장소를 찾을 수 없습니다.</p></li>");
+                                                                                    return false;
+                                                                                }
+                                                                                var listEl = document.getElementById('placesList'),
+                                                                                    menuEl = document.getElementById('menu_wrap'),
+                                                                                    fragment = document.createDocumentFragment(),
+                                                                                    bounds = new kakao.maps.LatLngBounds(),
+                                                                                    listStr = '';
+                                                                                // 검색 결과 목록에 추가된 항목들을 제거합니다
+                                                                                removeAllChildNods(listEl);
+
+
+                                                                                for (var i = 0; i < places.length; i++) {
+
+                                                                                    // 마커를 생성하고 지도에 표시합니다
+                                                                                    var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+                                                                                        marker = addMarker(placePosition, i),
+                                                                                        itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+                                                                                    // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+                                                                                    // LatLngBounds 객체에 좌표를 추가합니다
+                                                                                    bounds.extend(placePosition);
+
+                                                                                    // 마커와 검색결과 항목에 mouseover 했을때
+                                                                                    // 해당 장소에 인포윈도우에 장소명을 표시합니다
+                                                                                    // mouseout 했을 때는 인포윈도우를 닫습니다
+                                                                                    (function (marker, title) {
+                                                                                        kakao.maps.event.addListener(marker, 'mouseover', function () {
+                                                                                            displayInfowindow(marker, title);
+                                                                                        });
+
+                                                                                        kakao.maps.event.addListener(marker, 'mouseout', function () {
+                                                                                            infowindow.close();
+                                                                                        });
+
+                                                                                        kakao.maps.event.addListener(marker, 'click', function () {
+                                                                                            $("#memorial_address_form").val(title);
+                                                                                        });
+
+                                                                                        itemEl.onmouseover = function () {
+                                                                                            displayInfowindow(marker, title);
+                                                                                        };
+
+                                                                                        itemEl.onmouseout = function () {
+                                                                                            infowindow.close();
+                                                                                        };
+                                                                                    })(marker, places[i].place_name);
+
+                                                                                    fragment.appendChild(itemEl);
+                                                                                }
+
+                                                                                // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+                                                                                listEl.appendChild(fragment);
+                                                                                menuEl.scrollTop = 0;
+
+                                                                                // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+                                                                                // map.setBounds(bounds);
+                                                                            }
+
+                                                                            function chooseButtonOnclick(id) {
+
+                                                                                const placeInfoId = `#placeInfo_${id}`;
+                                                                                var placeInfo = $(placeInfoId)[0].innerHTML;
+                                                                                var placeObject = JSON.parse(placeInfo);
+
+                                                                                $("#obituary_funeral_map_info").val(placeInfo);
+                                                                                $("#addressSearchModalBtn").val(placeObject.place_name);
+                                                                                $('#addressSearchModalBtn').addClass('active')
+                                                                                $("#obituary_funeral_location").val(placeObject.address_name);
+                                                                                $('#obituary_funeral_location').addClass('active')
+                                                                                $('#addressSearchModalModal').fadeOut('fast');
+                                                                                (function fun2() {
+                                                                                    $('.modal-content').css({ 'transform': 'translateY(0px)' });
+                                                                                })();
+
+                                                                            }
+
+                                                                            // 검색결과 항목을 Element로 반환하는 함수입니다
+                                                                            function getListItem(index, places) {
+                                                                                const placeInfo = {
+                                                                                    id: places.id,
+                                                                                    address_name: places.address_name,
+                                                                                    place_name: places.place_name,
+                                                                                    long: places.x,
+                                                                                    lat: places.y,
+                                                                                    place_url: places.place_url,
+                                                                                    phone: places.phone,
+                                                                                }
+
+                                                                                var el = document.createElement('li'),
+                                                                                    itemStr =
+                                                                                        '<a onclick="chooseButtonOnclick(' + places.id + ');return false;" data-turbo-modal-id=' + places.id + '> <div class="info">' +
+                                                                                        '<p id="placeInfo_' + places.id + '" class="hidden">' + JSON.stringify(placeInfo) + '</p>' +
+                                                                                        '   <h5>' + places.place_name + '</h5>';
+
+                                                                                if (places.road_address_name) {
+                                                                                    itemStr += '    <span>' + places.road_address_name + '</span>' +
+                                                                                        '   <span class="jibun gray">' + places.address_name + '</span>';
+                                                                                } else {
+                                                                                    itemStr += '    <span>' + places.address_name + '</span>';
+                                                                                }
+
+                                                                                itemStr += '  <span class="tel">' + places.phone + '</span>' +
+                                                                                    '</div></a>';
+
+                                                                                el.innerHTML = itemStr;
+                                                                                el.className = 'item';
+
+                                                                                return el;
+                                                                            }
+
+
+                                                                            // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+                                                                            function addMarker(position, idx, title) {
+                                                                                var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+                                                                                    imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+                                                                                    imgOptions = {
+                                                                                        spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+                                                                                        spriteOrigin: new kakao.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+                                                                                        offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+                                                                                    },
+                                                                                    markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+                                                                                    marker = new kakao.maps.Marker({
+                                                                                        position: position, // 마커의 위치
+                                                                                        image: markerImage
+                                                                                    });
+
+                                                                                marker.setMap(map); // 지도 위에 마커를 표출합니다
+                                                                                markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+                                                                                return marker;
+                                                                            }
+
+                                                                            // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+                                                                            function removeMarker() {
+                                                                                for (var i = 0; i < markers.length; i++) {
+                                                                                    markers[i].setMap(null);
+                                                                                }
+                                                                                markers = [];
+                                                                            }
+
+                                                                            // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+                                                                            function displayPagination(pagination) {
+                                                                                var paginationEl = document.getElementById('pagination'),
+                                                                                    fragment = document.createDocumentFragment(),
+                                                                                    i;
+
+                                                                                // 기존에 추가된 페이지번호를 삭제합니다
+                                                                                while (paginationEl.hasChildNodes()) {
+                                                                                    paginationEl.removeChild(paginationEl.lastChild);
+                                                                                }
+
+                                                                                for (i = 1; i <= pagination.last; i++) {
+                                                                                    var el = document.createElement('a');
+                                                                                    el.href = "#";
+                                                                                    el.innerHTML = i;
+
+                                                                                    if (i === pagination.current) {
+                                                                                        el.className = 'on';
+                                                                                    } else {
+                                                                                        el.onclick = (function (i) {
+                                                                                            return function () {
+                                                                                                pagination.gotoPage(i);
+                                                                                                return false;
+                                                                                            }
+                                                                                        })(i);
+                                                                                    }
+
+                                                                                    fragment.appendChild(el);
+                                                                                }
+                                                                                paginationEl.appendChild(fragment);
+                                                                            }
+
+                                                                            // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+                                                                            // 인포윈도우에 장소명을 표시합니다
+                                                                            function displayInfowindow(marker, title) {
+                                                                                var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+                                                                                infowindow.setContent(content);
+                                                                                infowindow.open(map, marker);
+                                                                            }
+
+                                                                            // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+                                                                            function removeAllChildNods(el) {
+                                                                                while (el.hasChildNodes()) {
+                                                                                    el.removeChild(el.lastChild);
+                                                                                }
+                                                                            }
+                                                                        </script>
+                                                                        <style>
+                                                                            .infowindow-button:hover {
+                                                                                background-color: #315879 !important;
+                                                                            }
+
+                                                                            .modal-header {
+                                                                                padding: 10px;
+                                                                                border-bottom: none;
+                                                                            }
+
+
+                                                                            /* Bootstrap 4 text input with search icon */
+
+                                                                            .has-search .form-control {
+                                                                                padding-left: 2.375rem;
+                                                                            }
+
+                                                                            .has-search .form-control-feedback {
+                                                                                position: absolute;
+                                                                                z-index: 2;
+                                                                                display: block;
+                                                                                width: 2.375rem;
+                                                                                height: 2.375rem;
+                                                                                line-height: 2.375rem;
+                                                                                text-align: center;
+                                                                                pointer-events: none;
+                                                                                color: #aaa;
+                                                                            }
+
+                                                                            .map_wrap,
+                                                                            .map_wrap * {
+                                                                                margin: 0;
+                                                                                padding: 0;
+                                                                                font-size: 14px;
+                                                                            }
+
+                                                                            .map_wrap a,
+                                                                            .map_wrap a:hover,
+                                                                            .map_wrap a:active {
+                                                                                color: #000;
+                                                                                text-decoration: none;
+                                                                            }
+
+                                                                            .map_wrap {
+                                                                                position: relative;
+                                                                                width: 100%;
+                                                                                height: 500px;
+                                                                            }
+
+                                                                            #menu_wrap {
+                                                                                position: absolute;
+                                                                                top: 0;
+                                                                                left: 0;
+                                                                                bottom: 0;
+                                                                                width: 100%;
+                                                                                padding: 20px 0;
+                                                                                overflow-y: auto;
+                                                                                background: rgba(255, 255, 255, 0.7);
+                                                                                z-index: 1;
+                                                                                font-size: 12px;
+                                                                                border-radius: 10px;
+
+                                                                            }
+
+                                                                            .bg_white {
+                                                                                background: #fff;
+                                                                            }
+
+                                                                            #menu_wrap hr {
+                                                                                display: block;
+                                                                                height: 1px;
+                                                                                border: 0;
+                                                                                border-top: 2px solid #5F5F5F;
+                                                                                margin: 3px 0;
+                                                                            }
+
+                                                                            #menu_wrap .option {
+                                                                                text-align: center;
+                                                                            }
+
+                                                                            #menu_wrap .option p {
+                                                                                margin: 10px 0;
+                                                                            }
+
+                                                                            #menu_wrap .option button {
+                                                                                margin-left: 5px;
+                                                                            }
+
+                                                                            #placesList li {
+                                                                                list-style: none;
+                                                                            }
+
+                                                                            #placesList .item {
+                                                                                position: relative;
+                                                                                border-bottom: 1px solid #888;
+                                                                                overflow: hidden;
+                                                                                cursor: pointer;
+                                                                                min-height: 65px;
+                                                                            }
+
+                                                                            #placesList .item span {
+                                                                                display: block;
+                                                                                margin-top: 4px;
+                                                                            }
+
+                                                                            #placesList .item h5,
+                                                                            #placesList .item .info {
+                                                                                text-overflow: ellipsis;
+                                                                                overflow: hidden;
+                                                                                white-space: nowrap;
+                                                                            }
+
+                                                                            #placesList .item .info {
+                                                                                padding: 10px;
+                                                                            }
+
+                                                                            #placesList .info .gray {
+                                                                                color: #8a8a8a;
+                                                                            }
+
+                                                                            #placesList .info .jibun {
+                                                                                padding-left: 26px;
+                                                                                background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+                                                                            }
+
+                                                                            #placesList .info .tel {
+                                                                                color: #009900;
+                                                                            }
+
+                                                                            #placesList .item .markerbg {
+                                                                                float: left;
+                                                                                position: absolute;
+                                                                                width: 36px;
+                                                                                height: 37px;
+                                                                                margin: 10px 0 0 10px;
+                                                                                background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+                                                                            }
+
+                                                                            #placesList .item .marker_1 {
+                                                                                background-position: 0 -10px;
+                                                                            }
+
+                                                                            #placesList .item .marker_2 {
+                                                                                background-position: 0 -56px;
+                                                                            }
+
+                                                                            #placesList .item .marker_3 {
+                                                                                background-position: 0 -102px
+                                                                            }
+
+                                                                            #placesList .item .marker_4 {
+                                                                                background-position: 0 -148px;
+                                                                            }
+
+                                                                            #placesList .item .marker_5 {
+                                                                                background-position: 0 -194px;
+                                                                            }
+
+                                                                            #placesList .item .marker_6 {
+                                                                                background-position: 0 -240px;
+                                                                            }
+
+                                                                            #placesList .item .marker_7 {
+                                                                                background-position: 0 -286px;
+                                                                            }
+
+                                                                            #placesList .item .marker_8 {
+                                                                                background-position: 0 -332px;
+                                                                            }
+
+                                                                            #placesList .item .marker_9 {
+                                                                                background-position: 0 -378px;
+                                                                            }
+
+                                                                            #placesList .item .marker_10 {
+                                                                                background-position: 0 -423px;
+                                                                            }
+
+                                                                            #placesList .item .marker_11 {
+                                                                                background-position: 0 -470px;
+                                                                            }
+
+                                                                            #placesList .item .marker_12 {
+                                                                                background-position: 0 -516px;
+                                                                            }
+
+                                                                            #placesList .item .marker_13 {
+                                                                                background-position: 0 -562px;
+                                                                            }
+
+                                                                            #placesList .item .marker_14 {
+                                                                                background-position: 0 -608px;
+                                                                            }
+
+                                                                            #placesList .item .marker_15 {
+                                                                                background-position: 0 -654px;
+                                                                            }
+
+                                                                            #pagination {
+                                                                                margin: 10px auto;
+                                                                                text-align: center;
+                                                                            }
+
+                                                                            #pagination a {
+                                                                                display: inline-block;
+                                                                                margin-right: 10px;
+                                                                            }
+
+                                                                            #pagination .on {
+                                                                                font-weight: bold;
+                                                                                cursor: default;
+                                                                                color: #777;
+                                                                            }
+                                                                        </style>
+                                                                    </div>
+                                                                </div>
+                                                                <script type="text/javascript" charset="utf-8">
+                                                                    // Developer Info - Arjun (https://github.com/arjun0108)
+                                                                    document.addEventListener('turbo:load', function () {
+                                                                        $('#addressSearchModalBtn').click(function (event) {
+                                                                            showModal();
+                                                                            event.stopPropagation();
+                                                                        });
+
+                                                                        $('#addressSearchModalModalClose').click(function () {
+                                                                            hideModal();
+                                                                        });
+
+                                                                        // Do nothing when clicking on the modal content
+                                                                        $('.modal-content').click(function (event) {
+                                                                            event.stopPropagation();
+                                                                        });
+
+                                                                        function showModal() {
+                                                                            $('#addressSearchModalModal').fadeIn('slow');
+                                                                            (function fun() {
+                                                                                $('.modal-content').css({ 'transform': 'translateY(-50px)' });
+                                                                            })();
+                                                                        }
+
+                                                                        function hideModal() {
+                                                                            $('#addressSearchModalModal').fadeOut('fast');
+                                                                            (function fun2() {
+                                                                                $('.modal-content').css({ 'transform': 'translateY(0px)' });
+                                                                            })();
+                                                                        }
+
+                                                                        $(document).on("click", function () {
+                                                                            //click outside of ".nav__dropdown" class itself and menu will be hidden
+                                                                            hideModal();
+                                                                        });
+                                                                    })
+                                                                </script>
+
+                                                                <style>
+                                                                    #addressSearchModal-modal {
+                                                                        margin-top: 0px
+                                                                    }
+
+                                                                    #addressSearchModalModal {
+                                                                        padding-top: 30px
+                                                                    }
+                                                                </style>
+                                                            </div>
+                                                            <div class="col-span-12">
+                                                                <div class="flex justify-between">
+                                                                    <label for="first-name"
+                                                                        class="block text-sm font-medium text-gray-700">장례식장
+                                                                        주소</label>
+                                                                    <span class="text-sm text-gray-500"
+                                                                        id="email-optional">필수항목</span>
+                                                                </div>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    required="required" type="text"
+                                                                    name="obituary[funeral_location]"
+                                                                    id="obituary_funeral_location">
+                                                            </div>
+                                                            <input class="hidden" type="text" value=""
+                                                                name="obituary[funeral_map_info]"
+                                                                id="obituary_funeral_map_info">
+                                                            <div class="col-span-12">
+                                                                <label for="funeral_location"
+                                                                    class="block text-sm font-medium text-gray-700">빈소
+                                                                    위치 (호실)</label>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    type="text" name="obituary[funeral_additional_info]"
+                                                                    id="obituary_funeral_additional_info">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="bg-white py-6 px-4 sm:p-6">
+                                                <div class="">
+                                                    <div class="lg:col-span-4 space-y-6 sm:col-span-4">
+                                                        <h2 class="text-lg font-medium leading-6 text-gray-900">발인 정보
+                                                        </h2>
+                                                        <div class="mt-6 grid grid-cols-12 gap-6">
+                                                            <div class="col-span-12">
+                                                                <label for="burial_datetime"
+                                                                    class="block text-sm font-medium text-gray-700">발인일시</label>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    id="burial_datetime" type="datetime-local"
+                                                                    name="obituary[burial_datetime]">
+                                                            </div>
+
+                                                            <div class="col-span-12">
+                                                                <label for="burial_site"
+                                                                    class="block text-sm font-medium text-gray-700">장지</label>
+                                                                <input placeholder="장지 정보를 입력해주세요"
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    type="text" name="obituary[burial_site]"
+                                                                    id="obituary_burial_site">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="bg-white py-6 px-4 sm:p-6">
+                                                <div class="">
+                                                    <div class="lg:col-span-4 space-y-6 sm:col-span-4">
+                                                        <h2 class="text-lg font-medium leading-6 text-gray-900">부고 메세지
+                                                        </h2>
+                                                        <div class="mt-6 grid grid-cols-12 gap-6">
+                                                            <div class="col-span-12">
+                                                                <textarea row="4" style="height: 150px"
+                                                                    class="mt-5 block w-full rounded-md border-gray-300 shadow-sm focus:border-rememberyou-600 focus:ring-rememberyou-600 sm:text-sm"
+                                                                    name="obituary[note]"
+                                                                    id="obituary_note">따뜻한 마음의 위로 부탁드리며 고인의 명복을 빌어주시기 바랍니다.</textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="bg-white py-6 px-4 sm:p-6">
+                                                <div class="" data-controller="common">
+                                                    <div class="lg:col-span-4 space-y-6 sm:col-span-4">
+                                                        <div class="flex justify-between">
+                                                            <h2 class="text-lg font-medium leading-6 text-gray-900">부조금
+                                                                받을 계좌</h2>
+                                                            <div>
+                                                                <input name="obituary[not_accept_money]" type="hidden"
+                                                                    value="false" autocomplete="off"><input
+                                                                    class="check-box"
+                                                                    data-action="change->common#toggleDisabled"
+                                                                    data-common-target="source" type="checkbox"
+                                                                    value="true" name="obituary[not_accept_money]"
+                                                                    id="obituary_not_accept_money">
+                                                                <span class="ml-1 text-gray-500 text-sm">받지 않습니다</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mt-6 grid grid-cols-12 gap-6">
+                                                            <div class="col-span-12">
+                                                                <label for="bank_account_name"
+                                                                    class="block text-sm font-medium text-gray-700">예금주명</label>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    autocomplete="off" type="text"
+                                                                    name="obituary[bank_account_name]"
+                                                                    id="obituary_bank_account_name">
+                                                            </div>
+
+                                                            <div class="col-span-12">
+                                                                <label for="bank_name"
+                                                                    class="block text-sm font-medium text-gray-700">은행명</label>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    autocomplete="off" type="text"
+                                                                    name="obituary[bank_name]" id="obituary_bank_name">
+                                                            </div>
+
+                                                            <div class="col-span-12">
+                                                                <label for="bank_account_number"
+                                                                    class="block text-sm font-medium text-gray-700">계좌번호</label>
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    autocomplete="off" type="text"
+                                                                    name="obituary[bank_account_number]"
+                                                                    id="obituary_bank_account_number">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="bg-white py-6 px-4 sm:p-6">
+                                                <div class="">
+                                                    <div class="lg:col-span-4 space-y-6 sm:col-span-4">
+
+                                                        <h2 class="text-lg font-medium leading-6 text-gray-900">이메일</h2>
+                                                        <p class="text-sm leading-6 text-gray-500"
+                                                            style="margin-top: 5px">부고장 생성 후 링크를 보내드립니다.</p>
+                                                        <div class="mt-6 grid grid-cols-12 gap-6">
+                                                            <div class="col-span-12">
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    type="email" name="obituary[email]"
+                                                                    id="obituary_email">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="bg-white py-6 px-4 sm:p-6">
+                                                <div class="">
+                                                    <div class="lg:col-span-4 space-y-6 sm:col-span-4">
+                                                        <h2 class="text-lg font-medium leading-6 text-gray-900">부고 비밀번호
+                                                        </h2>
+                                                        <p class="text-sm leading-6 text-gray-500"
+                                                            style="margin-top: 5px">부고 수정 및 삭제 시 필요합니다.</p>
+                                                        <div class="mt-6 grid grid-cols-12 gap-6">
+                                                            <div class="col-span-12">
+                                                                <input
+                                                                    class="mt-1 block w-full rounded-md border border-gray-300 py-2 px-3 shadow-sm focus:border-rememberyou-600 focus:outline-none focus:ring-rememberyou-600 sm:text-sm required"
+                                                                    required="required" autocomplete="new-password"
+                                                                    name="notsearch_password" type="password"
+                                                                    id="obituary_password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6" style="margin-top: 0">
+                                                <input value="0" autocomplete="off" type="hidden"
+                                                    name="obituary[template_id]" id="obituary_template_id">
+                                                <input type="submit" name="commit" value="저장"
+                                                    class="btn btn-primary bg-black text-white" data-disable-with="저장">
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    <script type="text/javascript" charset="utf-8">
+                                        document.addEventListener('turbo:load', function () {
+                                            console.log('turbo loaded')
+                                            $('input[type=date]').click(function (event) {
+                                                var id = event.target.id
+                                                document.getElementById(id).showPicker();
+                                            });
+
+                                            $('input[type=datetime-local]').click(function (event) {
+                                                var id = event.target.id
+                                                document.getElementById(id).showPicker();
+                                            });
+                                        })
+                                    </script>
+                                </section>
+                            </div>
+                        </main>
+                    </div>
+                    <script type="text/javascript" charset="utf-8">
+                        document.addEventListener('turbo:load', function () {
+
+                            $('input[type=date]').click(function (event) {
+                                var id = event.target.id
+                                document.getElementById(id).showPicker();
+                            });
+                        })
+                    </script>
+                </main>
+        </main>
+    </div>
+</body>
+<script src="{{ url_for('static', filename='assets/js/jquery-3.6.1.min.js')}}"></script>
+<script>
+    $(function () {
+        $(document).mousedown(function (e) {
+            if ($("#togglemenu").is(":visible")) {
+                $("#togglemenu").each(function () {
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                        && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                    } else {
+                        $("#togglemenu").hide();
+                    }
+                });
+            }
+        });
+
+        $("#user-menu-button").click(function () {
+            $("#togglemenu").show();
+        });
+    });
+
+    $(function () {
+        $(document).mousedown(function (e) {
+            if ($("#mobiletoggle").is(":visible")) {
+                $("#mobiletoggle").each(function () {
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if ((l_position.left <= e.pageX && e.pageX <= l_position.right)
+                        && (l_position.top <= e.pageY && e.pageY <= l_position.bottom)) {
+                    } else {
+                        $("#mobiletoggle").hide();
+                    }
+                });
+            }
+        });
+
+        $("#mobilemenu").click(function () {
+            $("#mobiletoggle").show();
+        });
+    });
+
+    const $nav = document.querySelector('#tab-button-nav')
+    const $sections = document.querySelectorAll('.tab-section');
+
+    $nav.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('tab-button')) {
+            return;
+        }
+
+        const focusedTabId = e.target.dataset.tabSection;
+
+        $sections.forEach(($section) => {
+            if ($section.id === focusedTabId) {
+                $section.removeAttribute('hidden');
+            } else {
+                $section.setAttribute('hidden', true);
+            }
+        });
+    });
+</script>
+{% endblock %}
+</html>

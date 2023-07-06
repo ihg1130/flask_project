@@ -1,0 +1,106 @@
+<div class="mx-auto max-w-7xl">
+    <nav data-controller="menu">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 bg-white">
+        <div class="flex h-16 justify-between">
+          <div class="flex">
+            <div class="-ml-2 mr-2 flex items-center md:hidden">
+              <!-- Mobile menu button -->
+              <button type="button"
+                data-action="click->menu#toggleMobileMenu click@window->menu#clickOutsideMobileMenu"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                aria-controls="mobile-menu" aria-expanded="false" id="mobilemenu">
+                <span class="sr-only">Open main menu</span>
+                <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="flex flex-shrink-0 items-center">
+              <div id="logo">
+                <h1><a href="{{ url_for('main.index') }}">하늘 거울</a></h1>
+              </div>
+            </div>
+
+            <div class="hidden md:ml-6 md:flex md:items-center md:space-x-4">
+              <a href="{{ url_for('question.send') }}" data-turbo="false" class="block px-4 py-2 text-sm text-gray-700">부고장 만들기</a>
+            </div>
+
+          </div>
+          <div class="flex items-center">
+            <div class="flex-shrink-0 md:block hidden">
+              <a class="relative inline-flex btn-primary bg-black" href="{{ url_for('question.new') }}">
+                <span class="text-white">추모공간 만들기</span>
+              </a>
+            </div>
+            <div class="hidden md:ml-2 md:flex md:flex-shrink-0 md:items-center">
+              <!-- Profile dropdown -->
+              <div class="relative ml-3 me-3 d-flex flex-row-reverse">
+                <div>
+                  <button type="button"
+                    data-action="click->menu#toggleUserMenu click@window->menu#clickOutsideUserMenu"
+                    class="flex rounded-full text-sm focus:outline-none" id="user-menu-button" aria-expanded="false"
+                    aria-haspopup="true" id="togglebtn">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                      src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png" />
+                  </button>
+                </div>
+                {% if g.user %}
+        <ul class="navbar-nav float-end me-2 flex">
+            <li class="nav-item ">
+                <a class="nav-link">{{ g.user.username }}님</a>
+            </li>
+        </ul>
+        
+                <div data-menu-target="toggleableUserMenu"
+                  class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-xl focus:outline-none"
+                  role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+                  id="togglemenu">
+                  <a class="block px-4 py-2 text-sm text-gray-700 bg-rememberyou-100" href="{{ url_for('question.new') }}">추모공간
+                    만들기</a>
+                  <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" href="{{ url_for('question.setting') }}">마이 페이지</a>
+                  <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" href="{{ url_for('question.rooms') }}">나의 추모공간</a>
+                  <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50" href="{{ url_for('question.history') }}">나의
+                    활동</a>
+                      <a  href="{{ url_for('auth.logout') }}" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      >로그아웃</a>
+                      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="md:hidden hidden" data-menu-target="toggleableMobileMenu" id="mobiletoggle">
+        <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+          <a href="{{ url_for('question.send') }}" data-turbo="false" class="block px-4 py-2 text-sm text-gray-700">부고장 만들기</a>
+        </div>
+        <div class="border-t border-gray-300 pt-4 pb-3">
+          <div class="flex items-center px-5 sm:px-6">
+            <div class="flex-shrink-0">
+              <img class="flex h-10 w-10 items-center justify-center rounded-full"
+                src="https://www.rememberyou.kr/assets/placeholder-avatar-ab0e377d3d8c390895b33e1f65f69e6c7f2f605504a8d6cbf342cb4f036c4fe8.png">
+            </div>
+            <div class="ml-3">
+              <div class="text-base font-medium text-black">이름</div>
+              <div class="text-sm font-medium text-gray-400">이메일</div>
+            </div>
+          </div>
+
+          <div class="mt-3 space-y-1 px-2 sm:px-3">
+            <a class="block px-4 py-2 text-sm text-gray-700 bg-rememberyou-100" href="{{ url_for('question.new') }}">추모공간 만들기</a>
+            <a class="block px-4 py-2 text-sm text-gray-700" href="{{ url_for('question.setting') }}">마이 페이지</a>
+            <a class="block px-4 py-2 text-sm text-gray-700" href="{{ url_for('question.rooms') }}">나의 추모공간</a>
+            <a class="block px-4 py-2 text-sm text-gray-700" href="{{ url_for('question.history') }}">나의 활동</a>
+              <a  href="{{ url_for('auth.logout') }}" class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      >로그아웃</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% endif %}

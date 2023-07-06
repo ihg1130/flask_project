@@ -2,6 +2,13 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData
+from flask_jwt_extended import (
+    JWTManager, create_access_token, 
+    get_jwt_identity, jwt_required,
+    set_access_cookies, set_refresh_cookies, 
+    unset_jwt_cookies, create_refresh_token,
+    jwt_required,
+)
 
 import config
 
@@ -21,6 +28,13 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
+    app.config['JWT_SECRET_KEY'] = "I'M IML."
+    app.config['JWT_TOKEN_LOCATION'] = ['cookies']
+    app.config['JWT_COOKIE_SECURE'] = False
+    app.config['JWT_COOKIE_CSRF_PROTECT'] = True
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 30
+    app.config['JWT_REFRESH_TOKEN_EXPIRES'] = 100
+    jwt = JWTManager(app)
     app.config.from_object(config)
 
     # ORM

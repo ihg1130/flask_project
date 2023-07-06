@@ -1,0 +1,318 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+
+ */
+
+.grow-wrap {
+    /* easy way to plop the elements on top of each other and have them both sized based on the tallest one's height */
+    display: grid;
+}
+.grow-wrap::after {
+    /* Note the weird space! Needed to preventy jumpy behavior */
+    content: attr(data-replicated-value) " ";
+
+    /* This is how textarea text behaves */
+    white-space: pre-wrap;
+
+    /* Hidden from view, clicks, and screen readers */
+    visibility: hidden;
+}
+.grow-wrap > textarea {
+    /* You could leave this, but after a user resizes, then it ruins the auto sizing */
+    resize: none;
+
+    /* Firefox shows scrollbar on growth, you can hide like this. */
+    overflow: hidden;
+}
+.grow-wrap > textarea,
+.grow-wrap::after {
+
+    /* Place on top of each other */
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+/* Modal Content */
+.modal-content {
+    text-align:left;
+    margin: auto;
+    max-width: 500px;
+    margin-top: 150px;
+    transition: all 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+}
+
+#logo h1 {
+    font-size: 36px;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* @font-face {
+    font-family: 'Cafe24Oneprettynight';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'ChosunGs';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGs.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MaruBuri-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/miiusoft/font/MaruBuri/MaruBuri-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'MaruBuri-Light';
+    src: url('https://cdn.jsdelivr.net/gh/miiusoft/font/MaruBuri/MaruBuri-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'MaruBuri-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/miiusoft/font/MaruBuri/MaruBuri-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+em {
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+}
+
+p {
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+}
+div {
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+
+}
+
+button, a, span, label, input, select, .alert {
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+}
+
+input:disabled {
+    background: #e9ecef !important;
+}
+
+textarea::placeholder {
+    font-size: .875rem;
+    color: #a2a2a2;
+}
+
+input::placeholder {
+    font-size: .875rem;
+    color: #a2a2a2;
+}
+
+
+input[type=password] {
+    font-family: arial, sans-serif !important;
+}
+input[type=password]::placeholder {
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+}
+textarea {
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+}
+textarea::placeholder {
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+    font-size: 1.1em !important;
+}
+
+
+.dropzone {
+    border-radius: 3px;
+    min-height: 150px;
+    border: 2px dashed #dddddd !important;
+    background: white;
+}
+
+
+.delete-link {
+    width: 100%;
+    background-color: #00000057;
+    transition: .5s ease;
+    position: absolute;
+    top: 0px;
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.delete-text {
+    font-size: 20px;
+    padding: 5px 0;
+}
+
+
+#template {
+    background-repeat: no-repeat;
+    background-position: center 0%;
+    background-size: cover;
+    height: 590px;
+}
+
+#template {
+    max-width: 430px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+
+.temp0 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp0-8e12b523fce2f24d1372bd1263c39dd100d1e57c93cac8ad78775e55c122709d.png);
+}
+
+.temp1 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp1-537de9b7345a96b25c1c70c9bae815b23b72aaa760c3df219661032e231e640d.png);
+}
+
+.temp2 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp2-018012eee0aca3a37fc3b5a0f814d208ed9c9c216e95a0eafc978d531f8ad170.png);
+}
+
+.temp3 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp3-5f88cdb0d9e73e83676afe54a2579451923a5ed8de1947db4559a08b5ab0b230.png);
+}
+
+.temp4 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp4-3ec531cb936859e1fa60c138b47fb25439fa15fe2bcce149c4c1cfaf4dd1035d.png);
+}
+
+.temp5 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp5-228c72f9d8d797b780eec9ecf0af2ab6cd70061e6839b16fbbd6571305b276fc.png);
+}
+
+.temp6 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp6-69cfeebe8e1f1ff86364a5767732511402621afd5ca17f02d3c637b643952113.png);
+}
+
+.temp7 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp7-4b3fe0536f3d72ea1ba15bd750504922a7cb7509a51272a6c42855f2b65cf5eb.png);
+}
+
+.temp8 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp8-1df7088b8fd2716fe74fcc2f705c376112a59e4fac786dff661df4c085ee67c6.png);
+}
+
+.temp9 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp9-6fcf4d4970c203c302e9f11749e6adc395f7654f09ecb7928c24c6c376b4f86d.png);
+}
+
+.temp10 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp10-7aa48f35176ed0a32919db34f8ddbcd333b095bbfc9dd59c5911f9b1e4139e9a.png);
+}
+
+.temp11 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp11-721a49c4fee2d0d81000855196c89e33a2340a7c0850b253bc3760601c6e7a38.png);
+}
+
+.temp12 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp12-b8bd7b55118efb67d2600439b2c6b0d0c9a1d028bab50069bc1a677d33351cf1.png);
+}
+
+.temp13 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp13-48c7575abf4c3b2f39299959b9d9b509621e800d96fd59cf2aee22ebbef5467a.png);
+}
+
+.temp14 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp14-b6aa503a41c6e966287775351ecd1b8cb8156dd9c945cc055ab9dee39640b178.png);
+}
+
+.temp15 {
+    background-image: url(https://www.rememberyou.kr/assets/templates/temp15-7e34e0ea719450656b95f3ad5cabe4ec1a3ff3b90a4d1504534738a36bb8498c.png);
+}
+
+/* .disabled {
+    background: #e9ecef !important;
+} */
+
+
+.wrap-text {
+    overflow-wrap: break-word;
+    white-space: pre-line;
+}
+
+
+.trix-content img {
+    width: auto;
+    height: auto;
+
+    max-height: 500px;
+    margin: 0 auto;
+}
+
+.trix-content * {
+    line-height: 1.9;
+    font-family: MaruBuri-Light, Cafe24Oneprettynight, arial, sans-serif !important;
+}
+
+.trix-content strong {
+    line-height: 1.9;
+    font-family: MaruBuri-Regular, Cafe24Oneprettynight, arial, sans-serif !important;
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+    {% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하늘거울</title>
+    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Open+Sans:300,300i,400,400i,700,700i"
+        rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='assets/css/style.css')}}" rel="stylesheet">
+ 
+    <style>
+        .bg-image-vertical {
+            position: relative;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            background-position: right center;
+            background-size: auto 100%;
+        }
+
+        @media (min-width: 1025px) {
+            .h-custom-2 {
+                height: 100%;
+            }
+        }
+
+        .login-bg {
+            background-image: url("{{ url_for('static', filename='assets/img/login-bg.jpg') }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            opacity: 0.7;
+        }
+
+        .login-btn {
+            /*background-color: #92B5D9;*/
+            background-color: black;
+            color: white;
+        }
+
+        .signup {
+            cursor: pointer;
+        }
+
+        .signup:hover {
+            color: gray;
+        }
+
+        .signup-link {
+            color: #FCD477;
+        }
+
+        .signup-link:hover {
+            color: black;
+        }
+
+        .login>.row a {
+            color: #333
+        }
+
+        #modal-bg {
+            display: none;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        #modal-signup {
+            display: none;
+            position: absolute;
+            z-index: 1000;
+            border-radius: 19px;
+        }
+
+        .btn:hover {
+            background: #FCD477;
+            color: white;
+        }
+        .naver_kakao_login
+        {
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <section>
+        <div class="container-fluid mx-2 login">
+            <div class="row">
+                <div class="col-sm-6 text-black" style="padding-top: 40px;">
+                    <!-- <a href="index.html"><i class="bi bi-arrow-left ms-5 fs-3"></i></a> -->
+                    <div class="p-5 ms-xl-4">
+                        <span class="h1 fw-bold mb-0">하늘 거울</span>
+                    </div>
+                    <div class="naver_kakao_login w-75 mx-auto">
+                        <a id="kakao-login-btn" style="float:left;"></a>
+                        <!-- <button class="api-btn" onclick="unlinkApp()">앱 탈퇴하기</button> -->
+                        <div id="result"></div>
+                        <script type="text/javascript">
+                            function unlinkApp() {
+                                Kakao.API.request({
+                                    url: '/v1/user/unlink',
+                                    success: function (res) {
+                                        alert('success: ' + JSON.stringify(res))
+                                    },
+                                    fail: function (err) {
+                                        alert('fail: ' + JSON.stringify(err))
+                                    },
+                                })
+                            }
+                        </script>
+                        <script type="text/javascript">
+                            Kakao.init('53482fbe14f4ef1934f2d2b6f0ad0800');
+                            console.log(Kakao.isInitialized());
+
+                            Kakao.Auth.createLoginButton({
+                                container: '#kakao-login-btn',
+                                success: function (authObj) {
+                                    Kakao.API.request({
+                                        url: '/v2/user/me',
+                                        success: function (result) {
+                                            $('#result').append(result);
+                                            id = result.id
+                                            connected_at = result.connected_at
+                                            kakao_account = result.kakao_account
+                                            $('#result').append(kakao_account);
+                                            resultdiv = "<h2>로그인 성공 !!"
+                                            resultdiv += '<h4>id: ' + id + '<h4>'
+                                            resultdiv += '<h4>connected_at: ' + connected_at + '<h4>'
+
+                                            email = "";
+                                            gender = "";
+                                            if (typeof kakao_account != 'undefined') {
+                                                email = kakao_account.email;
+                                                gender = kakao_account.gender;
+                                            }
+                                            resultdiv += '<h4>email: ' + email + '<h4>'
+                                            resultdiv += '<h4>gender: ' + gender + '<h4>'
+                                            $('#result').append(resultdiv);
+
+                                        },
+                                        fail: function (error) {
+                                            alert(
+                                                'login success, but failed to request user information: ' +
+                                                JSON.stringify(error)
+                                            )
+                                        },
+                                    })
+                                },
+                                fail: function (err) {
+                                    alert('failed to login: ' + JSON.stringify(err))
+                                },
+                            })
+                        </script>
+                        <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+                        <div id="naver_id_login" class="ms-3 mt-1" style="float: left;"></div>
+                        <!-- //네이버아이디로로그인 버튼 노출 영역 -->
+                        <script type="text/javascript">
+                            var naver_id_login = new naver_id_login("WDPisH7Qf99KdnF0fgcz", "http://127.0.0.1:5000/naverlogin");
+                            var state = naver_id_login.getUniqState();
+                            naver_id_login.setButton("white", 2, 40);
+                            naver_id_login.setDomain("http://127.0.0.1:5000/");
+                            naver_id_login.setState(state);
+                            naver_id_login.setPopup();
+                            naver_id_login.init_naver_id_login();
+                        </script>
+                    </div>
+                    <br>
+                    <div class="d-flex align-items-center px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                        <form method="post">
+                            {{ form.csrf_token }}
+                            {% include "form_errors.html" %}
+                            <div class="form-outline mb-4" style="width: 300px">
+                                <input type="email" id="email" name="email" value="{{ form.email.data or '' }}" class="form-control form-control-lg" />
+                                <label class="form-label" for="email">이메일</label>
+                            </div>
+                            <div class="form-outline mb-4" style="width: 300px">
+                                <input type="password" id="password" name="password" value="{{ form.password.data or '' }}" class="form-control form-control-lg" />
+                                <label class="form-label" for="password">비밀번호</label>
+                            </div>
+                            <div class="p-1 mb-4">
+                                <button class="btn btn-lg btn-block login-btn" 
+                                 type="submit">로그인</button>
+                            </div>
+                            <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">비밀번호를 잊어버리셨나요?</a></p>
+                            <p>하늘거울의 이용자가 아니신가요? <a href="{{ url_for('auth.signup') }}" class="signup-link"><strong 
+                                        class="signup">회원가입</strong></a></p>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-6 p-0 d-none d-sm-block login-bg"></div>
+            </div>
+        </div>
+    </section>
+    <script src="{{ url_for('static', filename='assets/js/jquery-3.6.1.min.js') }}"></script>
+    
+</body>
+{% endblock %}
+</html>

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% block content %}
 <div class="container my-3">
     <!-- flash 오류 -->
@@ -8,19 +8,14 @@
     </div>
     {% endfor %}
     <!-- 질문 -->
-    <h2 class="border-bottom py-2">{{ question.subject }}</h2>
-    {% if question.file_name %}
-    <div>
-        <img src="{{ url_for('static', filename='image/DSC09580.JPG') }}", width="800" 
-        style="margin-left: auto; margin-right: auto; display: block;"/>
-        </div>
-    {% endif %}
+    <h2 class="border-bottom py-2 h3 mt-5">{{ question.subject }}</h2>
     <div class="card my-3">
         <div class="card-body">
             <div class="card-text" style="white-space: pre-line;">{{ question.content }}</div>
             <div class="d-flex justify-content-end">
                 <div class="badge bg-light text-dark p-2 text-start">
-                    <div class="mb-2">작성자 : {{ question.user.username }}</div>
+                    <div class="mb-2">작성자 : {{ question.name }}</div>
+                    <div class="mb-2">관계 : {{ question.relation }}</div>
                     <div>{{ question.create_date|datetime }}</div>
                 </div>
             </div>
@@ -32,14 +27,14 @@
                 {% if g.user == question.user %}
                 <a href="{{ url_for('question.modify', question_id=question.id) }}"
                    class="btn btn-sm btn-outline-secondary">수정</a>
-                   <a href="javascript:void(0)" class="delete btn btn-sm btn-outline-secondary"
-               data-uri="{{ url_for('question.delete', question_id=question.id) }}">삭제</a>
+                   <a href="{{ url_for('question.delete', question_id=question.id) }}" class="delete btn btn-sm btn-outline-secondary"
+               >삭제</a>
                 {% endif %}
             </div>
         </div>
     </div>
     <!-- 답변 목록 -->
-    <h5 class="border-bottom my-3 py-2">{{ question.answer_set|length }}개의 답변이 있습니다.</h5>
+    <h5 class="border-bottom my-3 py-2 h6">{{ question.answer_set|length }}개의 답변이 있습니다.</h5>
     {% for answer in question.answer_set %}
     <a id="answer_{{ answer.id }}"></a>
     <div class="card my-3">
@@ -59,8 +54,8 @@
                 {% if g.user == answer.user %}
                 <a href="{{ url_for('answer.modify', answer_id=answer.id) }}"
                    class="btn btn-sm btn-outline-secondary">수정</a>
-                   <a href="#" class="delete btn btn-sm btn-outline-secondary "
-               data-uri="{{ url_for('answer.delete', answer_id=answer.id) }}">삭제</a>
+                   <a href="{{ url_for('answer.delete', answer_id=answer.id) }}" class="delete btn btn-sm btn-outline-secondary "
+               >삭제</a>
                 {% endif %}
             </div>
         </div>
