@@ -10,7 +10,7 @@ from flask_jwt_extended import (
     jwt_required,
 )
 
-import config
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -28,6 +28,7 @@ migrate = Migrate()
 
 def create_app():
     app = Flask(__name__)
+    app.config.from_envvar('APP_CONFIG_FILE')
     app.config['JWT_SECRET_KEY'] = "I'M IML."
     app.config['JWT_TOKEN_LOCATION'] = ['cookies']
     app.config['JWT_COOKIE_SECURE'] = False
@@ -35,7 +36,7 @@ def create_app():
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 30
     app.config['JWT_REFRESH_TOKEN_EXPIRES'] = 100
     jwt = JWTManager(app)
-    app.config.from_object(config)
+   
 
     # ORM
     db.init_app(app)
